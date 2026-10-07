@@ -6,22 +6,25 @@
 (function () {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  // Colours and identity emoji match the shipped Project 1 app.
   const MEMBERS = {
-    prince: { name: 'Prince', emoji: '🚗', color: 'var(--prince)' },
-    mark:   { name: 'Mark',   emoji: '🚲', color: 'var(--mark)' },
+    prince: { name: 'Prince', emoji: '🏎️', color: 'var(--prince)' },
+    mark:   { name: 'Mark',   emoji: '🚴', color: 'var(--mark)' },
     ayushi: { name: 'Ayushi', emoji: '🌙', color: 'var(--ayushi)' },
-    adrian: { name: 'Adrian', emoji: '📖', color: 'var(--adrian)' },
+    adrian: { name: 'Adrian', emoji: '📚', color: 'var(--adrian)' },
   };
 
-  // Illustrative wandering parameters. As in the original project, Mark moves
-  // fastest (High Activity Level); everyone else is tuned to be perceptibly different.
+  // Movement values from the shipped app's MOVEMENT table, converted from
+  // per-frame (60 fps) units: speed = mid of min/max speed × 60 px/s,
+  // turnRate = wanderChance × 60 per second, turnAmount = wanderStrength (rad).
   const PERSONALITY = {
-    prince: { speed: 34, turnRate: 0.55, turnAmount: 0.9 },
-    mark:   { speed: 70, turnRate: 0.9,  turnAmount: 1.1 },
-    ayushi: { speed: 26, turnRate: 0.35, turnAmount: 0.6 },
-    adrian: { speed: 30, turnRate: 0.7,  turnAmount: 1.3 },
+    prince: { speed: 7.8,  turnRate: 2.1,  turnAmount: 0.75 },
+    mark:   { speed: 28.5, turnRate: 2.1,  turnAmount: 0.70 },
+    ayushi: { speed: 15.6, turnRate: 0.84, turnAmount: 0.35 },
+    adrian: { speed: 19.5, turnRate: 0.72, turnAmount: 0.30 },
   };
-  const UNIFORM = { speed: 36, turnRate: 0.6, turnAmount: 0.9 };
+  // Everyone identical: the average of the four, so only the differences disappear.
+  const UNIFORM = { speed: 17.9, turnRate: 1.44, turnAmount: 0.53 };
 
   function rubberband(over, dim, c = 0.55) {
     return (over * dim * c) / (dim + c * Math.abs(over));

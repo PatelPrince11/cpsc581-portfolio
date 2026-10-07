@@ -35,14 +35,21 @@
         <dl class="facts">
           <div><dt>Team</dt><dd>Adrian Aure, Mark Cawili, Prince Patel, Ayushi Patil</dd></div>
           <div><dt>My role</dt><dd>Concept development, AI-assisted implementation lead, testing</dd></div>
+          <div><dt>Live app</dt><dd><a href="https://markcawili.github.io/bubbles.github.io/" target="_blank" rel="noopener">markcawili.github.io/bubbles.github.io ↗</a></dd></div>
           <div><dt>Timeline</dt><dd>1 week, Sept 2026</dd></div>
           <div><dt>Methods</dt><dd>Parallel concept sketching, storyboards, criteria-based evaluation, iterative prototyping</dd></div>
           <div><dt>Tools</dt><dd>Paper &amp; pencil, digital sketching, Google Docs, Claude Code, Playwright, HTML/CSS/JS</dd></div>
         </dl>
 
-        <div class="playground" id="cs-pg" data-playground data-mode="personality" aria-label="Interactive re-creation of the four member bubbles" style="margin-top:48px">
-          <span class="hint">Try it: drag, flick, or tab to a bubble and use the arrow keys.</span>
+        <div class="device">
+          <div class="bar">
+            <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="url">markcawili.github.io/bubbles.github.io</span>
+            <a class="open" href="https://markcawili.github.io/bubbles.github.io/" target="_blank" rel="noopener">Open full screen ↗</a>
+          </div>
+          <iframe src="https://markcawili.github.io/bubbles.github.io/" title="A Family of Buttons: the live Project 1 app" loading="lazy" allow="autoplay"></iframe>
         </div>
+        <p class="embed-note"><span>This is the real app, running live. Hover a bubble, click to cycle interests, and drag two together to merge them.</span><span>Sound is on, so turn it up.</span></p>
       </div>
     </header>
 
@@ -215,8 +222,8 @@
             <p>At first all four bubbles used the same random drift. Colour and icon told them apart, but their <em>behaviour</em> said nothing about the people. So we used the same movement algorithm with different parameters for each member, chosen from personality traits that translate naturally into motion:</p>
 
             <div class="spec">
-              <div class="k">Activity Level</div><div class="v">→ <strong>Speed.</strong> Minimum and maximum travel speed. Mark's High Activity result makes his bubble visibly the fastest.</div>
-              <div class="k">Excitement-Seeking</div><div class="v">→ <strong>Wandering.</strong> How often a bubble changes direction and how sharply it turns.</div>
+              <div class="k">Activity Level</div><div class="v">→ <strong>Speed.</strong> Minimum and maximum travel speed. Mark's High Activity result makes his bubble the fastest by far (0.40–0.55 px/frame against Prince's calm 0.10–0.16).</div>
+              <div class="k">Excitement-Seeking</div><div class="v">→ <strong>Wandering.</strong> How often a bubble changes direction and how sharply it turns. Prince and Mark change course often, while Ayushi and Adrian hold a steadier line.</div>
             </div>
 
             <p>Toggle between the two versions below to see the difference.</p>
@@ -225,7 +232,7 @@
               <button type="button" data-mode="uniform" aria-pressed="true">Same for everyone</button>
               <button type="button" data-mode="personality" aria-pressed="false">Personality-driven</button>
             </div>
-            <p class="small muted" style="margin-top:12px">Re-created for this portfolio. The parameter values are illustrative, as they were in the original.</p>
+            <p class="small muted" style="margin-top:12px">Re-created for this portfolio using the exact speed and wander values from the shipped app. “Same for everyone” uses the average of the four.</p>
 
             <div class="callout">
               <strong>A deliberate limit</strong>
@@ -253,9 +260,32 @@
               <li><div><p class="said">“Actually test everything… if you find bugs just fix them.”</p><p class="did"><b>Verification.</b> Automated Playwright runs covered dragging, merging, splitting, invalid merges, the 3-person case, mobile and keyboard.</p></div></li>
             </ol>
 
-            <p>Other polish: each member got a colour so the bubbles don't rely on icons alone, hovering shows the name and interest, emoji replaced custom icons (🚗 🚲 🌙 📖), and a soft pop sound confirms clicks, merges and splits.</p>
+            <p>Other polish: each member got a colour so the bubbles don't rely on icons alone, hovering shows the name and interest, emoji replaced custom icons (🏎️ 🚴 🌙 📚), and a soft pop sound confirms clicks, merges and splits.</p>
 
-            <div class="todo">Add 2–3 screenshots or a short screen recording (GIF/MP4) of the final app: the canvas, a merge with the personality card, and a rejected merge. If the app is hosted, add a “Try the live app” button here.</div>
+<h3 style="margin-top:48px">The result</h3>
+            <p>These were captured from the live app. You can also <a href="https://markcawili.github.io/bubbles.github.io/" target="_blank" rel="noopener">open it yourself ↗</a>.</p>
+            <div class="shots">
+              <figure class="wide reveal">
+                <button class="fig" type="button"><img src="assets/p1/app/01-landing.jpg" alt="The live app's landing view: headline 'Four people. One connected team.' beside a canvas with four coloured bubbles: a race car, a cyclist, a moon and books." loading="lazy"></button>
+                <figcaption><b>Landing.</b> Four member bubbles drift around a live canvas, each with its own colour, identity emoji and dots showing how many interests it holds.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig" type="button"><img src="assets/p1/app/02-hover-cycle.jpg" alt="Hovering Prince's blue bubble shows a tooltip reading 'Prince, Cars'; the first of four dots under the bubble is active." loading="lazy"></button>
+                <figcaption><b>Hover &amp; click.</b> The tooltip names the person and interest, and the dots show where you are in their list.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig" type="button"><img src="assets/p1/app/03-merge-pair.jpg" alt="Mark and Prince merged into one larger gold bubble with a volleyball, labelled Mark + Prince." loading="lazy"></button>
+                <figcaption><b>Merge.</b> Mark + Prince become one larger bubble showing their real shared interest, volleyball.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig" type="button"><img src="assets/p1/app/04-card-pair.jpg" alt="Connection card for Mark and Prince: 73% personality match, 22 of 30 Big Five traits align, with each trait plotted on a low–moderate–high scale and shared traits tagged." loading="lazy"></button>
+                <figcaption><b>The connection card.</b> 73% match: 22 of 30 traits fall in the same band, and each trait is plotted for both people.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig" type="button"><img src="assets/p1/app/06-card-three.jpg" alt="Connection card for Mark, Prince and Adrian, labelled Team Core: 37% personality match, 11 of 30 traits align." loading="lazy"></button>
+                <figcaption><b>Three-way merge.</b> Adding Adrian drops the match to 37%, because a trait only counts when all three share it. The app shows the lower number as it is.</figcaption>
+              </figure>
+            </div>
           </section>
 
           <!-- ===== HONESTY ===== -->
@@ -265,8 +295,8 @@
             <p>The most important rule we set wasn't visual. A tool that generates code will happily generate plausible data too, so we made honesty an explicit requirement:</p>
             <div class="grid three" style="margin-top:24px">
               <div class="card reveal"><h4>No shared hobby?</h4><p class="muted small">Show a neutral 🤝 handshake. Don't make up a match. (Adrian and Prince have no shared hobby, and the app says so.)</p></div>
-              <div class="card reveal"><h4>Missing report?</h4><p class="muted small">Show “not enough data yet” and don't estimate a personality match.</p></div>
-              <div class="card reveal"><h4>The percentage</h4><p class="muted small">Computed only from the 30 ITP traits. A trait matches only when <em>every</em> merged member shares the same Low/Moderate/High level. If the real number is low, the app shows the low number.</p></div>
+              <div class="card reveal"><h4>Missing report?</h4><p class="muted small">While reports were still coming in, we required the app to say “not enough data yet” and never estimate a match.</p></div>
+              <div class="card reveal"><h4>The percentage</h4><p class="muted small">Computed only from the 30 ITP traits. A trait matches only when <em>every</em> merged member shares the same Low/Moderate/High level. Mark + Prince show 73%. Add Adrian and it falls to 37%, and the app shows that.</p></div>
             </div>
             <p style="margin-top:24px">We also re-checked every trait against the original reports after finding a transcription error, because a wrong input would have made the percentage wrong.</p>
           </section>
