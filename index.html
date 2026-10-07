@@ -5,20 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prince Patel · HCI Portfolio</title>
   <meta name="description" content="Design portfolio for CPSC 581 Human-Computer Interaction II (Fall 2026), University of Calgary: projects, design process and personal design philosophy.">
-  <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%230066cc'/><circle cx='36' cy='34' r='9' fill='white' opacity='.85'/></svg>">
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121014" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='28' cy='28' r='22' fill='%234c6fe0'/><circle cx='72' cy='28' r='22' fill='%23e39a4e'/><circle cx='28' cy='72' r='22' fill='%238b6fe0'/><circle cx='72' cy='72' r='22' fill='%232fae93'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
   <nav class="nav" aria-label="Primary">
     <div class="wrap">
-      <a class="brand" href="index.html">Prince Patel <span>· CPSC 581</span></a>
+      <a class="brand" href="index.html" aria-label="Prince Patel, home">
+        <svg class="mark" viewBox="0 0 18 18" aria-hidden="true"><circle cx="4.5" cy="4.5" r="4" fill="var(--prince)"/><circle cx="13.5" cy="4.5" r="4" fill="var(--mark)"/><circle cx="4.5" cy="13.5" r="4" fill="var(--ayushi)"/><circle cx="13.5" cy="13.5" r="4" fill="var(--adrian)"/></svg>
+        <span class="name">Prince Patel</span> <span>· CPSC 581</span>
+      </a>
       <ul>
         <li><a href="#work">Work</a></li>
         <li><a href="#philosophy">Philosophy</a></li>
@@ -32,21 +35,18 @@
     <!-- ============ HERO ============ -->
     <header class="hero">
       <div class="wrap">
-        <p class="eyebrow">CPSC 581 · Human-Computer Interaction · Fall 2026</p>
-        <h1 class="display">I design for the <span class="grad">space between</span> things.</h1>
-        <p class="lead">I'm Prince Patel. This portfolio collects my work from CPSC 581: the sketches, dead ends, decisions and prototypes behind each project, and how my thinking about design changes over the semester.</p>
+        <div class="hero-copy">
+        <p class="status"><i aria-hidden="true"></i>CPSC 581 · Fall 2026 · Check-in 1</p>
+        <h1 class="display">I design for the <em class="grad">space between</em> things.</h1>
+        <p class="lead">I'm Prince Patel. This is my record of CPSC 581: the sketches, dead ends, decisions and prototypes behind each project, and how my thinking about design changes over the semester.</p>
         <div class="hero-actions">
           <a class="btn" href="project-1.html">Read Project 1 →</a>
           <a class="btn ghost" href="#philosophy">My design philosophy</a>
         </div>
+        </div>
 
-        <div class="app-scene">
-          <div class="app-panel">
-            <div class="playground" id="hero-pg" data-playground data-mode="personality" aria-label="Interactive demo: the four member bubbles from Project 1">
-              <span class="hint">Grab a bubble and flick it</span>
-            </div>
-            <div class="app-info"><span class="left"><span class="dotcluster" aria-hidden="true"><i></i><i></i><i></i><i></i></span>A Family of Buttons · Live canvas</span><span class="right">CPSC 581 · Fall 2026</span></div>
-          </div>
+        <div class="playground constellation" id="hero-pg" data-playground data-mode="personality" aria-label="Interactive demo: the four member bubbles from Project 1. Threads appear between bubbles that drift close.">
+          <span class="hint">the four buttons from Project 1. Throw one.</span>
         </div>
       </div>
     </header>
@@ -55,8 +55,8 @@
     <section id="work">
       <div class="wrap">
         <div class="section-head reveal">
-          <p class="eyebrow">Selected work</p>
-          <h2>Three projects, one semester.</h2>
+          <p class="eyebrow"><span class="idx">01</span><span class="rule"></span>Selected work</p>
+          <h2>Three projects, <em>one semester.</em></h2>
           <p class="lead">Each case study follows the same arc, from the brief to divergent ideas, the decision, refinement, the build and reflection, with my individual contribution called out.</p>
         </div>
 
@@ -72,6 +72,7 @@
               <span class="go">Read the case study →</span>
             </div>
             <div class="art" aria-hidden="true">
+              <span class="num">01</span>
               <span class="float" style="--c:var(--prince);width:96px;height:96px;font-size:40px;left:14%;top:18%;--dx:14px;--dy:10px"><span>🏎️</span></span>
               <span class="float" style="--c:var(--mark);width:84px;height:84px;font-size:34px;left:58%;top:12%;--dx:-16px;--dy:14px;animation-duration:6s"><span>🚴</span></span>
               <span class="float" style="--c:var(--ayushi);width:90px;height:90px;font-size:36px;left:22%;top:58%;--dx:12px;--dy:-12px;animation-duration:11s"><span>🌙</span></span>
@@ -83,14 +84,14 @@
             <div class="card project soon reveal">
               <div class="info">
                 <p class="eyebrow">Project 2</p>
-                <h3 class="h3">In progress</h3>
+                <h3 class="h3"><span class="ital">In progress</span></h3>
                 <p class="muted small" style="margin:0">This case study goes up after Project 2 wraps. Check-in 2 is due Nov 19.</p>
               </div>
             </div>
             <div class="card project soon reveal">
               <div class="info">
                 <p class="eyebrow">Project 3</p>
-                <h3 class="h3">Upcoming</h3>
+                <h3 class="h3"><span class="ital">Upcoming</span></h3>
                 <p class="muted small" style="margin:0">This case study goes up before the final submission on Dec 4.</p>
               </div>
             </div>
@@ -103,43 +104,69 @@
     <section id="philosophy" class="alt">
       <div class="wrap">
         <div class="section-head reveal">
-          <p class="eyebrow">Design philosophy · v1, October 2026</p>
-          <h2>What I believe about design, so far.</h2>
+          <p class="eyebrow"><span class="idx">02</span><span class="rule"></span>Design philosophy · v1, October 2026</p>
+          <h2>What I believe about design, <em>so far.</em></h2>
           <p class="lead">These principles came out of real decisions in my projects, and each one links back to the moment it came from. I'll revise this list after every project, and the <a href="#growth">growth log</a> records what changed.</p>
         </div>
 
-        <div class="grid two">
-          <article class="card principle reveal">
-            <span class="num">01</span>
-            <h3>Design the relationships, not just the parts.</h3>
-            <p class="muted">Four of our five concepts showed four people side by side, and none of them could show how those people related. The interesting part of an interface is often in how its elements act on each other.</p>
-            <p class="from">From <a href="project-1.html#pattern">Project 1 · The pattern</a></p>
-          </article>
-          <article class="card principle reveal">
-            <span class="num">02</span>
-            <h3>Go wide while ideas are cheap.</h3>
-            <p class="muted">Sketching five concepts on paper cost us an evening. Building the wrong one would have cost us the week. Parallel ideas also gave us something to compare, so we found the pattern by contrast.</p>
-            <p class="from">From <a href="project-1.html#diverge">Project 1 · Diverge</a></p>
-          </article>
-          <article class="card principle reveal">
-            <span class="num">03</span>
-            <h3>Be honest with the data, even when it's boring.</h3>
-            <p class="muted">If two people share no hobby, the interface says so. If a personality report is missing, it says “not enough data” and doesn't guess. An interface that invents connections loses the user's trust.</p>
-            <p class="from">From <a href="project-1.html#honesty">Project 1 · Data honesty</a></p>
-          </article>
-          <article class="card principle reveal">
-            <span class="num">04</span>
-            <h3>Constraints are design material.</h3>
-            <p class="muted">We had one week, four schedules and no animators. We dropped the beautiful puzzle and mountain concepts because they couldn't ship. Feasibility doesn't compromise a design. It's part of the design.</p>
-            <p class="from">From <a href="project-1.html#converge">Project 1 · Converge</a></p>
-          </article>
-          <article class="card principle reveal">
-            <span class="num">05</span>
-            <h3>Accessible by default, not by patch.</h3>
-            <p class="muted">A playful drag-and-drop interface still has to work with a keyboard, on a phone, and for people who turn off motion. I treat these as requirements from the start.</p>
-            <p class="from">From <a href="project-1.html#build">Project 1 · Build</a></p>
-          </article>
-        </div>
+        <ol class="principles">
+          <li class="reveal">
+            <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="14" cy="32" r="10" fill="var(--prince)"/><circle cx="50" cy="32" r="10" fill="var(--mark)"/>
+              <line x1="27" y1="32" x2="37" y2="32" stroke="var(--text)" stroke-width="1.5" stroke-dasharray="1 4" stroke-linecap="round"/>
+            </svg>
+            <h3><span class="n">01</span>Design the relationships, not just the parts.</h3>
+            <div>
+              <p>Four of our five concepts showed four people side by side, and none of them could show how those people related. The interesting part of an interface is often in how its elements act on each other.</p>
+              <p class="from">From <a href="project-1.html#pattern">Project 1 · The pattern</a></p>
+            </div>
+          </li>
+          <li class="reveal">
+            <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true">
+              <g fill="none" stroke="var(--text-3)" stroke-width="1.5"><circle cx="7" cy="46" r="5"/><circle cx="17" cy="26" r="5"/><circle cx="47" cy="26" r="5"/><circle cx="57" cy="46" r="5"/></g>
+              <circle cx="32" cy="17" r="7" fill="var(--adrian)"/>
+            </svg>
+            <h3><span class="n">02</span>Go wide while ideas are cheap.</h3>
+            <div>
+              <p>Sketching five concepts on paper cost us an evening. Building the wrong one would have cost us the week. Parallel ideas also gave us something to compare, so we found the pattern by contrast.</p>
+              <p class="from">From <a href="project-1.html#diverge">Project 1 · Diverge</a></p>
+            </div>
+          </li>
+          <li class="reveal">
+            <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="32" cy="32" r="24" fill="none" stroke="var(--line)" stroke-width="6"/>
+              <circle cx="32" cy="32" r="24" fill="none" stroke="var(--ayushi)" stroke-width="6" stroke-linecap="round" stroke-dasharray="55.8 150.8" transform="rotate(-90 32 32)"/>
+            </svg>
+            <h3><span class="n">03</span>Be honest with the data, even when it's boring.</h3>
+            <div>
+              <p>If two people share no hobby, the interface says so. If the personality match is only 37%, it shows 37%. An interface that invents connections loses the user's trust.</p>
+              <p class="from">From <a href="project-1.html#honesty">Project 1 · Data honesty</a></p>
+            </div>
+          </li>
+          <li class="reveal">
+            <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="7" y="7" width="50" height="50" rx="3" fill="none" stroke="var(--text)" stroke-width="1.5"/>
+              <circle cx="32" cy="32" r="24" fill="var(--mark)"/>
+            </svg>
+            <h3><span class="n">04</span>Constraints are design material.</h3>
+            <div>
+              <p>We had one week, four schedules and no animators. We dropped the beautiful puzzle and mountain concepts because they couldn't ship. Feasibility doesn't compromise a design. It's part of the design.</p>
+              <p class="from">From <a href="project-1.html#converge">Project 1 · Converge</a></p>
+            </div>
+          </li>
+          <li class="reveal">
+            <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="32" cy="32" r="27" fill="none" stroke="var(--prince)" stroke-width="1.5" opacity=".35"/>
+              <circle cx="32" cy="32" r="18" fill="none" stroke="var(--prince)" stroke-width="1.5" opacity=".65"/>
+              <circle cx="32" cy="32" r="9" fill="var(--prince)"/>
+            </svg>
+            <h3><span class="n">05</span>Accessible by default, not by patch.</h3>
+            <div>
+              <p>A playful drag-and-drop interface still has to work with a keyboard, on a phone, and for people who turn off motion. I treat these as requirements from the start.</p>
+              <p class="from">From <a href="project-1.html#build">Project 1 · Build</a></p>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -147,8 +174,8 @@
     <section id="growth">
       <div class="wrap narrow">
         <div class="section-head reveal">
-          <p class="eyebrow">Growth log</p>
-          <h2>How my practice is changing.</h2>
+          <p class="eyebrow"><span class="idx">03</span><span class="rule"></span>Growth log</p>
+          <h2>How my practice <em>is changing.</em></h2>
           <p class="lead">A running record of what I learned, what I'd do differently, and how my philosophy changed after each milestone.</p>
         </div>
 
@@ -185,12 +212,23 @@
     <!-- ============ ABOUT ============ -->
     <section id="about" class="alt">
       <div class="wrap narrow reveal">
-        <p class="eyebrow">About</p>
-        <h2>Hi, I'm Prince.</h2>
+        <p class="eyebrow"><span class="idx">04</span><span class="rule"></span>About</p>
+        <h2>Hi, I'm <em>Prince.</em></h2>
         <p class="lead">I'm a computer science student at the University of Calgary. I like the point where engineering meets how something feels to use. I build what I design, and I like testing ideas in working prototypes instead of static mockups.</p>
         <div class="todo">A sentence or two about your background, interests, and what you want to get out of HCI. Add a photo or a contact link (email / LinkedIn / GitHub) if you like.</div>
       </div>
     </section>
+
+    <div class="signoff reveal">
+      <div class="wrap">
+        <svg class="threads" viewBox="0 0 320 40" aria-hidden="true">
+          <g stroke="var(--text-3)" stroke-width="1.25" stroke-dasharray="1 6" stroke-linecap="round"><line x1="22" y1="20" x2="98" y2="20"/><line x1="122" y1="20" x2="198" y2="20"/><line x1="222" y1="20" x2="298" y2="20"/></g>
+          <circle cx="10" cy="20" r="10" fill="var(--prince)"/><circle cx="110" cy="20" r="10" fill="var(--mark)"/><circle cx="210" cy="20" r="10" fill="var(--ayushi)"/><circle cx="310" cy="20" r="10" fill="var(--adrian)"/>
+        </svg>
+        <p class="big">Thanks for reading. <em>More soon.</em></p>
+        <p class="muted">Project 2 lands here after Check-in 2 on November 19.</p>
+      </div>
+    </div>
   </main>
 
   <footer>
@@ -200,7 +238,7 @@
     </div>
   </footer>
 
-  <script src="js/site.js?v=4"></script>
-  <script src="js/bubbles.js?v=4"></script>
+  <script src="js/site.js?v=5"></script>
+  <script src="js/bubbles.js?v=5"></script>
 </body>
 </html>
