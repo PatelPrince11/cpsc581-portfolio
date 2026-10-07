@@ -52,6 +52,11 @@
 
     function params(b) { return mode === 'personality' ? PERSONALITY[b.id] : UNIFORM; }
 
+    // One set of limits for dragging and for the walls, so a release never jumps.
+    // The floor leaves room for the interest dots under each bubble.
+    const FLOOR = 20;
+    function bounds(b) { return { x0: b.r, x1: W - b.r, y0: b.r, y1: H - b.r - FLOOR }; }
+
     function measure() {
       W = root.clientWidth; H = root.clientHeight;
       bubbles.forEach((b) => { b.r = b.el.offsetWidth / 2; });
@@ -94,11 +99,16 @@
         b.x += b.vx * dt;
         b.y += b.vy * dt;
 
-        // Walls — bounce and turn the heading away.
-        if (b.x < b.r) { b.x = b.r; b.vx = Math.abs(b.vx) * 0.8; b.heading = Math.PI - b.heading; }
-        if (b.x > W - b.r) { b.x = W - b.r; b.vx = -Math.abs(b.vx) * 0.8; b.heading = Math.PI - b.heading; }
-        if (b.y < b.r) { b.y = b.r; b.vy = Math.abs(b.vy) * 0.8; b.heading = -b.heading; }
-        if (b.y > H - b.r - 20) { b.y = H - b.r - 20; b.vy = -Math.abs(b.vy) * 0.8; b.heading = -b.heading; }
+        // Walls: bounce away, and if a drag left the bubble past an edge, ease it
+        // back (critically damped) instead of snapping it there in one frame.
+        const { x0, x1, y0, y1 } = bounds(b);
+        const back = still || dt === 0 ? 1 : 1 - Math.exp(-14 * dt);
+        let hit = false;
+        if (b.x < x0) { if (b.vx < 0) { b.vx = -b.vx * 0.8; hit = true; } b.x += (x0 - b.x) * (x0 - b.x < 1 ? 1 : back); }
+        if (b.x > x1) { if (b.vx > 0) { b.vx = -b.vx * 0.8; hit = true; } b.x += (x1 - b.x) * (b.x - x1 < 1 ? 1 : back); }
+        if (b.y < y0) { if (b.vy < 0) { b.vy = -b.vy * 0.8; hit = true; } b.y += (y0 - b.y) * (y0 - b.y < 1 ? 1 : back); }
+        if (b.y > y1) { if (b.vy > 0) { b.vy = -b.vy * 0.8; hit = true; } b.y += (y1 - b.y) * (b.y - y1 < 1 ? 1 : back); }
+        if (hit) b.heading = Math.atan2(b.vy, b.vx);
       }
 
       // Soft separation so bubbles never sit on top of each other.
@@ -152,11 +162,12 @@
         if (!d || d.id !== e.pointerId) return;
         const px = e.clientX - d.rect.left, py = e.clientY - d.rect.top;
         let x = px - d.ox, y = py - d.oy;
-        // Rubber-band past the walls instead of a hard stop.
-        if (x < b.r) x = b.r - rubberband(b.r - x, W);
-        if (x > W - b.r) x = W - b.r + rubberband(x - (W - b.r), W);
-        if (y < b.r) y = b.r - rubberband(b.r - y, H);
-        if (y > H - b.r) y = H - b.r + rubberband(y - (H - b.r), H);
+        // Rubber-band past the walls instead of a hard stop (same limits as the physics).
+        const { x0, x1, y0, y1 } = bounds(b);
+        if (x < x0) x = x0 - rubberband(x0 - x, W);
+        if (x > x1) x = x1 + rubberband(x - x1, W);
+        if (y < y0) y = y0 - rubberband(y0 - y, H);
+        if (y > y1) y = y1 + rubberband(y - y1, H);
         b.x = x; b.y = y;
         d.hist.push({ x: px, y: py, t: e.timeStamp });
         if (d.hist.length > 6) d.hist.shift();
@@ -202,16 +213,20 @@
       const oldW = W || 1, oldH = H || 1;
       measure();
       bubbles.forEach((b) => {
-        b.x = Math.min(Math.max(b.r, (b.x / oldW) * W), W - b.r);
-        b.y = Math.min(Math.max(b.r, (b.y / oldH) * H), H - b.r);
+        const { x0, x1, y0, y1 } = bounds(b);
+        b.x = Math.min(Math.max(x0, (b.x / oldW) * W), x1);
+        b.y = Math.min(Math.max(y0, (b.y / oldH) * H), y1);
       });
       render();
     }).observe(root);
 
+    let onScreen = false;
     new IntersectionObserver(([entry]) => {
-      entry.isIntersecting && !document.hidden ? start() : stop();
+      onScreen = entry.isIntersecting;
+      onScreen && !document.hidden ? start() : stop();
     }).observe(root);
-    document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
+    // Coming back to the tab only restarts demos that are actually on screen.
+    document.addEventListener('visibilitychange', () => { onScreen && !document.hidden ? start() : stop(); });
 
     return {
       setMode(m) { mode = m; },
