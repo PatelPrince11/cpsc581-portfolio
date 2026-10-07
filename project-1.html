@@ -5,20 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>A Family of Buttons — Prince Patel</title>
   <meta name="description" content="CPSC 581 Project 1 case study: four buttons that interact to show team dynamics. Five concepts, one decision, a floating-bubble prototype.">
-  <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%230066cc'/><circle cx='36' cy='34' r='9' fill='white' opacity='.85'/></svg>">
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121014" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='28' cy='28' r='22' fill='%234c6fe0'/><circle cx='72' cy='28' r='22' fill='%23e39a4e'/><circle cx='28' cy='72' r='22' fill='%238b6fe0'/><circle cx='72' cy='72' r='22' fill='%232fae93'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
   <nav class="nav" aria-label="Primary">
     <div class="wrap">
-      <a class="brand" href="index.html">Prince Patel <span>· CPSC 581</span></a>
+      <a class="brand" href="index.html" aria-label="Prince Patel, home">
+        <svg class="mark" viewBox="0 0 18 18" aria-hidden="true"><circle cx="4.5" cy="4.5" r="4" fill="var(--prince)"/><circle cx="13.5" cy="4.5" r="4" fill="var(--mark)"/><circle cx="4.5" cy="13.5" r="4" fill="var(--ayushi)"/><circle cx="13.5" cy="13.5" r="4" fill="var(--adrian)"/></svg>
+        <span class="name">Prince Patel</span> <span>· CPSC 581</span>
+      </a>
       <ul>
         <li><a href="index.html#work">Work</a></li>
         <li><a href="index.html#philosophy">Philosophy</a></li>
@@ -32,7 +35,7 @@
     <header class="cs-hero">
       <div class="wrap">
         <p class="eyebrow"><a href="index.html#work">← All work</a> · Project 1</p>
-        <h1 class="display">A Family of Buttons</h1>
+        <h1 class="display">A Family <em>of Buttons</em></h1>
         <p class="lead">The brief: design one button per teammate, and make the buttons interact so they reveal our team's dynamics. We made bubbles that float, collide, merge into shared interests, and move according to each person's personality.</p>
 
         <dl class="facts">
@@ -82,14 +85,14 @@
           <!-- ===== BRIEF ===== -->
           <section class="chapter" id="brief">
             <p class="eyebrow">01 · The brief</p>
-            <h2>Four buttons. One team.</h2>
+            <h2>Four buttons. <em>One team.</em></h2>
             <p>The assignment set two constraints: <strong>exactly one button per team member</strong>, and the buttons had to <strong>show team dynamics</strong>, meaning similarities, differences and relationships, not just four profiles. Everything had to be brainstormed, built, polished and documented in one week while four people worked around other classes and jobs.</p>
           </section>
 
           <!-- ===== DIVERGE ===== -->
           <section class="chapter" id="diverge">
             <p class="eyebrow">02 · Diverge</p>
-            <h2>Five concepts, sketched in parallel.</h2>
+            <h2>Five concepts, <em>sketched in parallel.</em></h2>
             <p>Before committing to anything we explored several directions on paper. Each storyboard walks through the interaction step by step, so we could judge the experience and not just a single screen.</p>
 
             <div class="grid three" style="margin-top:32px">
@@ -147,7 +150,7 @@
           <!-- ===== PATTERN ===== -->
           <section class="chapter" id="pattern">
             <p class="eyebrow">03 · The pattern</p>
-            <h2>Every idea was four separate buttons.</h2>
+            <h2>Every idea was <em>four separate buttons.</em></h2>
             <p>Comparing the concepts side by side showed a problem none of them revealed alone. Puzzle pieces, mini-sites and mountain peaks look different, but they share the same interaction: <em>pick one person and see information about that person.</em> None of them let the buttons interact with each other, which is where team dynamics would appear.</p>
 
             <p class="quote">The visuals were different. The interaction was the same every time.</p>
@@ -164,7 +167,7 @@
           <!-- ===== CONVERGE ===== -->
           <section class="chapter" id="converge">
             <p class="eyebrow">04 · Converge</p>
-            <h2>Choosing with criteria, not taste.</h2>
+            <h2>Choosing with criteria, <em>not taste.</em></h2>
             <p>We scored every concept against three questions. This meant giving up some of our most visually creative ideas. That was hard, but it was the right call.</p>
 
             <div class="matrix-wrap reveal">
@@ -187,7 +190,7 @@
           <!-- ===== REFINE ===== -->
           <section class="chapter" id="refine">
             <p class="eyebrow">05 · Refine</p>
-            <h2>From four bubbles to a family.</h2>
+            <h2>From four bubbles <em>to a family.</em></h2>
             <p>The first bubble concept still described individuals. After Lecture 6 we asked what should happen when two bubbles touch, and that question gave the concept its point.</p>
 
             <ol class="flow" aria-label="Interaction model">
@@ -226,7 +229,7 @@
           <!-- ===== MOVEMENT ===== -->
           <section class="chapter" id="movement">
             <p class="eyebrow">06 · Personality in motion</p>
-            <h2>Each bubble moves like its owner.</h2>
+            <h2>Each bubble moves <em>like its owner.</em></h2>
             <p>At first all four bubbles used the same random drift. Colour and icon told them apart, but their <em>behaviour</em> said nothing about the people. So we used the same movement algorithm with different parameters for each member, chosen from personality traits that translate naturally into motion:</p>
 
             <div class="spec">
@@ -256,7 +259,7 @@
           <!-- ===== BUILD ===== -->
           <section class="chapter" id="build">
             <p class="eyebrow">07 · Build</p>
-            <h2>Prototyping by conversation.</h2>
+            <h2>Prototyping <em>by conversation.</em></h2>
             <p>We built the app with Claude Code, giving it the team's brainstorm document as the starting point and then refining step by step with prompts and manual edits. Our prompts were mostly design decisions. These are the turning points:</p>
 
             <figure class="reveal" style="max-width:560px;margin:24px 0">
@@ -304,7 +307,7 @@
           <!-- ===== HONESTY ===== -->
           <section class="chapter" id="honesty">
             <p class="eyebrow">08 · Data honesty</p>
-            <h2>The interface never invents a connection.</h2>
+            <h2>The interface never <em>invents a connection.</em></h2>
             <p>The most important rule we set wasn't visual. A tool that generates code will happily generate plausible data too, so we made honesty an explicit requirement:</p>
             <div class="grid three" style="margin-top:24px">
               <div class="card reveal"><h4>No shared hobby?</h4><p class="muted small">Show a neutral 🤝 handshake. Don't make up a match. (Adrian and Prince have no shared hobby, and the app says so.)</p></div>
@@ -317,7 +320,7 @@
           <!-- ===== CONTRIBUTION ===== -->
           <section class="chapter" id="contribution">
             <p class="eyebrow">09 · My contribution</p>
-            <h2>What I did.</h2>
+            <h2>What <em>I</em> did.</h2>
             <ul>
               <li><strong>Led the AI-assisted build.</strong> I wrote and iterated the prompt sequence above. I turned the team's brainstorm into working behaviour one decision at a time and reviewed each result before the next step.</li>
               <li><strong>Set the data-honesty rules.</strong> Merges only when a real shared interest exists, “not enough data” instead of guesses, and a match percentage computed from all 30 traits.</li>
@@ -330,7 +333,7 @@
           <!-- ===== REFLECTION ===== -->
           <section class="chapter" id="reflection">
             <p class="eyebrow">10 · Reflection</p>
-            <h2>What I'm taking forward.</h2>
+            <h2>What I'm <em>taking forward.</em></h2>
 
             <h3>Divergence works, but only if you compare.</h3>
             <p>No single sketch showed us the problem. We only saw that every concept was four separate buttons when we laid them side by side. This matches Dow et al.'s finding that designers who prototype in parallel produce more divergent and better-rated work than those who iterate on one idea. Next time I'll write the design criteria <em>before</em> we sketch, so we can test sketches against them sooner.</p>
@@ -376,7 +379,7 @@
     </div>
   </footer>
 
-  <script src="js/site.js?v=4"></script>
-  <script src="js/bubbles.js?v=4"></script>
+  <script src="js/site.js?v=5"></script>
+  <script src="js/bubbles.js?v=5"></script>
 </body>
 </html>

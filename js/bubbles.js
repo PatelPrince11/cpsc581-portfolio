@@ -44,6 +44,7 @@
       el.setAttribute('aria-label', `${m.name}'s bubble. Drag or flick it, or press arrow keys to push it.`);
       el.innerHTML = `<span class="emo" aria-hidden="true">${m.emoji}</span>`
         + `<span class="dots" aria-hidden="true">${'<i></i>'.repeat(m.count)}</span>`
+        + `<span class="name" aria-hidden="true">${m.name}</span>`
         + `<span class="tag" aria-hidden="true"><b>${m.name}</b><small>Drag to move · ${m.count} interests in the real app</small></span>`;
       root.appendChild(el);
       const heading = Math.random() * Math.PI * 2;
@@ -54,7 +55,28 @@
 
     // One set of limits for dragging and for the walls, so a release never jumps.
     // The floor leaves room for the interest dots under each bubble.
-    const FLOOR = 20;
+    const threaded = root.classList.contains('constellation');
+    const FLOOR = threaded ? 38 : 20;
+
+    // Constellation mode: one dotted thread per pair, fading in as two bubbles
+    // approach. It is the "space between" made visible.
+    const pairs = [];
+    if (threaded) {
+      const NS = 'http://www.w3.org/2000/svg';
+      const svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('class', 'threads');
+      svg.setAttribute('aria-hidden', 'true');
+      root.prepend(svg);
+      for (let i = 0; i < bubbles.length; i++) {
+        for (let j = i + 1; j < bubbles.length; j++) {
+          const line = document.createElementNS(NS, 'line');
+          const knot = document.createElementNS(NS, 'circle');
+          knot.setAttribute('r', '2.5');
+          svg.append(line, knot);
+          pairs.push({ a: bubbles[i], b: bubbles[j], line, knot });
+        }
+      }
+    }
     function bounds(b) { return { x0: b.r, x1: W - b.r, y0: b.r, y1: H - b.r - FLOOR }; }
 
     function measure() {
@@ -79,6 +101,20 @@
       bubbles.forEach((b) => {
         b.el.style.transform = `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0)`;
       });
+      if (!pairs.length) return;
+      const reach = Math.max(300, Math.hypot(W, H) * 0.55);
+      for (const p of pairs) {
+        const dx = p.b.x - p.a.x, dy = p.b.y - p.a.y, d = Math.hypot(dx, dy) || 1;
+        const t = Math.max(0, 1 - d / reach);
+        const o = (Math.pow(t, 1.4) * 0.85).toFixed(3);
+        // Run the thread edge to edge, not centre to centre.
+        const ux = dx / d, uy = dy / d;
+        p.line.setAttribute('x1', p.a.x + ux * (p.a.r + 6)); p.line.setAttribute('y1', p.a.y + uy * (p.a.r + 6));
+        p.line.setAttribute('x2', p.b.x - ux * (p.b.r + 6)); p.line.setAttribute('y2', p.b.y - uy * (p.b.r + 6));
+        p.line.style.opacity = d < p.a.r + p.b.r + 14 ? 0 : o; // touching: no gap left to draw
+        p.knot.setAttribute('cx', (p.a.x + p.b.x) / 2); p.knot.setAttribute('cy', (p.a.y + p.b.y) / 2);
+        p.knot.style.opacity = (t > 0.35 ? (t - 0.35) * 1.4 : 0).toFixed(3);
+      }
     }
 
     function step(dt) {
