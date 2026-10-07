@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Family of Buttons — Prince Patel</title>
+  <meta name="description" content="CPSC 581 Project 1 case study: four buttons that interact to show team dynamics. Five concepts, one decision, a floating-bubble prototype.">
+  <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%230066cc'/><circle cx='36' cy='34' r='9' fill='white' opacity='.85'/></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary">
+    <div class="wrap">
+      <a class="brand" href="index.html">Prince Patel <span>· CPSC 581</span></a>
+      <ul>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#philosophy">Philosophy</a></li>
+        <li><a href="index.html#growth">Growth</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="cs-hero">
+      <div class="wrap">
+        <p class="eyebrow"><a href="index.html#work">← All work</a> · Project 1</p>
+        <h1 class="display">A Family of Buttons</h1>
+        <p class="lead">The brief: design one button per teammate, and make the buttons interact so they reveal our team's dynamics. We made bubbles that float, collide, merge into shared interests, and move according to each person's personality.</p>
+
+        <dl class="facts">
+          <div><dt>Team</dt><dd>Adrian Aure, Mark Cawili, Prince Patel, Ayushi Patil</dd></div>
+          <div><dt>My role</dt><dd>Concept development, AI-assisted implementation lead, testing</dd></div>
+          <div><dt>Timeline</dt><dd>1 week, Sept 2026</dd></div>
+          <div><dt>Methods</dt><dd>Parallel concept sketching, storyboards, criteria-based evaluation, iterative prototyping</dd></div>
+          <div><dt>Tools</dt><dd>Paper &amp; pencil, digital sketching, Google Docs, Claude Code, Playwright, HTML/CSS/JS</dd></div>
+        </dl>
+
+        <div class="playground" id="cs-pg" data-playground data-mode="personality" aria-label="Interactive re-creation of the four member bubbles" style="margin-top:48px">
+          <span class="hint">Try it: drag, flick, or tab to a bubble and use the arrow keys.</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="cs-layout">
+        <aside class="toc" aria-label="On this page">
+          <ol>
+            <li><a href="#brief">The brief</a></li>
+            <li><a href="#diverge">Diverge</a></li>
+            <li><a href="#pattern">The pattern</a></li>
+            <li><a href="#converge">Converge</a></li>
+            <li><a href="#refine">Refine</a></li>
+            <li><a href="#movement">Personality in motion</a></li>
+            <li><a href="#build">Build</a></li>
+            <li><a href="#honesty">Data honesty</a></li>
+            <li><a href="#contribution">My contribution</a></li>
+            <li><a href="#reflection">Reflection</a></li>
+          </ol>
+        </aside>
+
+        <article>
+          <!-- ===== BRIEF ===== -->
+          <section class="chapter" id="brief">
+            <p class="eyebrow">01 · The brief</p>
+            <h2>Four buttons. One team.</h2>
+            <p>The assignment set two constraints: <strong>exactly one button per team member</strong>, and the buttons had to <strong>show team dynamics</strong>, meaning similarities, differences and relationships, not just four profiles. Everything had to be brainstormed, built, polished and documented in one week while four people worked around other classes and jobs.</p>
+          </section>
+
+          <!-- ===== DIVERGE ===== -->
+          <section class="chapter" id="diverge">
+            <p class="eyebrow">02 · Diverge</p>
+            <h2>Five concepts, sketched in parallel.</h2>
+            <p>Before committing to anything we explored several directions on paper. Each storyboard walks through the interaction step by step, so we could judge the experience and not just a single screen.</p>
+
+            <div class="grid three" style="margin-top:32px">
+              <figure class="card concept reveal">
+                <button class="fig crop" type="button"><img src="assets/p1/fig1-puzzle-1.jpg" alt="Pencil storyboard: four scattered puzzle pieces are dragged into a frame; a placed piece expands into an animated scene of a dragon chasing a car." loading="lazy"></button>
+                <div class="body">
+                  <h4>Puzzle pieces #1</h4>
+                  <p>Drag scattered pieces into a frame. Each placed piece expands into an animated scene combining that person's interests.</p>
+                  <span class="why"><span class="chip no dot">Rejected</span> Too much animation work, and no way to compare members.</span>
+                </div>
+                <figcaption hidden>Figure 1. Puzzle Piece concept #1 storyboard.</figcaption>
+              </figure>
+
+              <figure class="card concept reveal">
+                <button class="fig crop" type="button"><img src="assets/p1/fig2-puzzle-2.jpg" alt="Pencil storyboard: an assembled 2×2 puzzle with a car, bike, moon and book; clicking the car piece plays an animation inside it while others stay still." loading="lazy"></button>
+                <div class="body">
+                  <h4>Puzzle pieces #2</h4>
+                  <p>A simpler version: the pieces start assembled, and clicking one plays an animation inside it.</p>
+                  <span class="why"><span class="chip no dot">Rejected</span> Still four separate animations, and the pieces never interact.</span>
+                </div>
+                <figcaption hidden>Figure 2. Puzzle Piece concept #2 storyboard.</figcaption>
+              </figure>
+
+              <figure class="card concept reveal">
+                <button class="fig crop" type="button"><img src="assets/p1/fig3-peaks.jpg" alt="Pencil storyboard: a village under a mountain with four peaks, each with an icon; clicking a peak opens a small pop-up about that member." loading="lazy"></button>
+                <div class="body">
+                  <h4>Mountain peaks</h4>
+                  <p>A village beneath four peaks. Each peak is a member's button and opens a pop-up about them.</p>
+                  <span class="why"><span class="chip no dot">Rejected</span> In practice it's four navigation links, with nothing connecting the peaks.</span>
+                </div>
+                <figcaption hidden>Figure 3. Mountain Peaks concept storyboard.</figcaption>
+              </figure>
+
+              <div class="card concept reveal">
+                <div class="placeholder-art" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                <div class="body">
+                  <h4>Four mini-websites</h4>
+                  <p>A hub page with four buttons, each leading to a personal mini-site styled around that member.</p>
+                  <span class="why"><span class="chip no dot">Rejected</span> Five pages to build, and it separates the team when the brief asks us to connect it.</span>
+                </div>
+              </div>
+
+              <figure class="card concept winner reveal">
+                <button class="fig crop" type="button"><img src="assets/p1/fig5a-bubbles-hover.png" alt="Digital sketch: floating bubbles, one containing a bike icon labelled Mark / Cycling, with a note that hovering shows text." loading="lazy"></button>
+                <div class="body">
+                  <h4>Floating bubbles</h4>
+                  <p>Four bubbles drift around the screen. Click to cycle a member's interests, hover to see a name.</p>
+                  <span class="why"><span class="chip yes dot">Chosen</span> Bubbles can collide, merge and separate, so the interaction itself can show relationships.</span>
+                </div>
+                <figcaption hidden>Figure 5. Initial Bubbles concept sketch.</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <!-- ===== PATTERN ===== -->
+          <section class="chapter" id="pattern">
+            <p class="eyebrow">03 · The pattern</p>
+            <h2>Every idea was four separate buttons.</h2>
+            <p>Comparing the concepts side by side showed a problem none of them revealed alone. Puzzle pieces, mini-sites and mountain peaks look different, but they share the same interaction: <em>pick one person and see information about that person.</em> None of them let the buttons interact with each other, which is where team dynamics would appear.</p>
+
+            <p class="quote">The visuals were different. The interaction was the same every time.</p>
+
+            <p>We turned that insight into explicit design criteria. We needed an interaction where:</p>
+            <ul>
+              <li>exactly <strong>four primary buttons</strong> represent the four members;</li>
+              <li>each button says <strong>something about its member</strong>;</li>
+              <li>the buttons can <strong>directly interact</strong> with one another;</li>
+              <li><strong>similarities and differences emerge</strong> from those interactions.</li>
+            </ul>
+          </section>
+
+          <!-- ===== CONVERGE ===== -->
+          <section class="chapter" id="converge">
+            <p class="eyebrow">04 · Converge</p>
+            <h2>Choosing with criteria, not taste.</h2>
+            <p>We scored every concept against three questions. This meant giving up some of our most visually creative ideas. That was hard, but it was the right call.</p>
+
+            <div class="matrix-wrap reveal">
+              <table class="matrix">
+                <thead>
+                  <tr><th scope="col">Concept</th><th scope="col">Meets the brief</th><th scope="col">Shows relationships</th><th scope="col">Feasible in a week</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Puzzle pieces #1</th><td><span class="chip part dot">Partly</span></td><td><span class="chip no dot">Bolt-on only</span></td><td><span class="chip no dot">Heavy animation</span></td></tr>
+                  <tr><th scope="row">Puzzle pieces #2</th><td><span class="chip part dot">Partly</span></td><td><span class="chip no dot">No</span></td><td><span class="chip part dot">Four animations</span></td></tr>
+                  <tr><th scope="row">Four mini-websites</th><td><span class="chip part dot">Partly</span></td><td><span class="chip no dot">Separates us</span></td><td><span class="chip no dot">Five pages</span></td></tr>
+                  <tr><th scope="row">Mountain peaks</th><td><span class="chip part dot">Partly</span></td><td><span class="chip no dot">No</span></td><td><span class="chip part dot">Illustration-heavy</span></td></tr>
+                  <tr class="win"><th scope="row">Floating bubbles</th><td><span class="chip yes dot">Yes</span></td><td><span class="chip yes dot">Merge &amp; split</span></td><td><span class="chip yes dot">Simple shapes</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="small muted">The ratings summarise the reasoning in our project report.</p>
+          </section>
+
+          <!-- ===== REFINE ===== -->
+          <section class="chapter" id="refine">
+            <p class="eyebrow">05 · Refine</p>
+            <h2>From four bubbles to a family.</h2>
+            <p>The first bubble concept still described individuals. After Lecture 6 we asked what should happen when two bubbles touch, and that question gave the concept its point.</p>
+
+            <ol class="flow" aria-label="Interaction model">
+              <li>Individual bubble</li><li class="arrow" aria-hidden="true">→</li>
+              <li>Their interests</li><li class="arrow" aria-hidden="true">→</li>
+              <li>Merged bubbles</li><li class="arrow" aria-hidden="true">→</li>
+              <li>Shared interests</li><li class="arrow" aria-hidden="true">→</li>
+              <li>Personality match</li>
+            </ol>
+
+            <div class="grid two" style="margin-top:8px">
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p1/fig5b-bubbles-cycle.png" alt="Sketch: clicking Mark's bike bubble pops it, and a new bubble with a plant icon rises from the bottom, cycling through interests." loading="lazy"></button>
+                <figcaption><b>Click to cycle.</b> A bubble pops and a new one rises with the member's next interest.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p1/fig7-merge.png" alt="Sketch: dragging Mark's bike bubble into Prince's cassette bubble pops both and spawns a bigger bubble with a laptop icon labelled Tech." loading="lazy"></button>
+                <figcaption><b>Drag to merge.</b> Two members who share something become one bigger bubble showing what they share.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p1/fig8-pop.png" alt="Sketch: clicking the merged Tech bubble pops it back into the members' individual bubbles." loading="lazy"></button>
+                <figcaption><b>Click to split.</b> Popping a merged bubble returns each member to their own bubble.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p1/fig6-adrian-sketch.jpg" alt="Adrian's in-class pencil sketch of combinations: dragon plus book becomes a Star Wars scene; car plus bike becomes a road scene; computer plus food becomes a digital art easel." loading="lazy"></button>
+                <figcaption><b>In-class collaboration.</b> Adrian's sketch exploring what each combination could produce.</figcaption>
+              </figure>
+            </div>
+
+            <div class="callout">
+              <strong>Adding a second layer of data</strong>
+              <p>Hobbies are easy to grasp but shallow. We added results from our ITP personality survey, so a merge now shows <em>what</em> members enjoy together and also <em>how alike</em> they are across 30 personality traits.</p>
+            </div>
+          </section>
+
+          <!-- ===== MOVEMENT ===== -->
+          <section class="chapter" id="movement">
+            <p class="eyebrow">06 · Personality in motion</p>
+            <h2>Each bubble moves like its owner.</h2>
+            <p>At first all four bubbles used the same random drift. Colour and icon told them apart, but their <em>behaviour</em> said nothing about the people. So we used the same movement algorithm with different parameters for each member, chosen from personality traits that translate naturally into motion:</p>
+
+            <div class="spec">
+              <div class="k">Activity Level</div><div class="v">→ <strong>Speed.</strong> Minimum and maximum travel speed. Mark's High Activity result makes his bubble visibly the fastest.</div>
+              <div class="k">Excitement-Seeking</div><div class="v">→ <strong>Wandering.</strong> How often a bubble changes direction and how sharply it turns.</div>
+            </div>
+
+            <p>Toggle between the two versions below to see the difference.</p>
+            <div class="playground" id="mv-pg" data-playground data-mode="uniform" aria-label="Movement comparison demo" style="height:clamp(260px,38vw,360px);margin-top:20px"></div>
+            <div class="toggle" role="group" aria-label="Movement model" data-controls="mv-pg">
+              <button type="button" data-mode="uniform" aria-pressed="true">Same for everyone</button>
+              <button type="button" data-mode="personality" aria-pressed="false">Personality-driven</button>
+            </div>
+            <p class="small muted" style="margin-top:12px">Re-created for this portfolio. The parameter values are illustrative, as they were in the original.</p>
+
+            <div class="callout">
+              <strong>A deliberate limit</strong>
+              <p>We considered mapping Gregariousness to attraction between bubbles, which was one of our clearest differences. But it would have needed real physics and a shakier psychological interpretation. All four of us also scored “Moderate” on Excitement-Seeking, so we tuned those values until the differences were <em>perceptible</em>, and we say plainly that they're not a literal conversion of the scores.</p>
+            </div>
+          </section>
+
+          <!-- ===== BUILD ===== -->
+          <section class="chapter" id="build">
+            <p class="eyebrow">07 · Build</p>
+            <h2>Prototyping by conversation.</h2>
+            <p>We built the app with Claude Code, giving it the team's brainstorm document as the starting point and then refining step by step with prompts and manual edits. Our prompts were mostly design decisions. These are the turning points:</p>
+
+            <figure class="reveal" style="max-width:560px;margin:24px 0">
+              <button class="fig" type="button"><img src="assets/p1/fig4-brainstorm-doc.png" alt="Team brainstorm document describing the Bubbles concept: four member bubbles, click to cycle interests, hover for name, drag together to merge into a bigger bubble with a shared interest, click to pop apart." loading="lazy"></button>
+              <figcaption><b>The starting spec.</b> The team's brainstorm document, given to the AI as the base for the build.</figcaption>
+            </figure>
+
+            <ol class="prompts">
+              <li><div><p class="said">“They feel too static… can I actually drag them together and have them merge?”</p><p class="did"><b>Direct manipulation first.</b> Real drift and real drag-to-merge, instead of a static grid of icons.</p></div></li>
+              <li><div><p class="said">“It should only merge if they actually have something in common… maybe have it bounce back.”</p><p class="did"><b>Feedback for invalid actions.</b> A rejected merge bounces back, so the user learns that some people don't share that interest.</p></div></li>
+              <li><div><p class="said">“Instead of expanding the bubble… have a card underneath that changes when I merge people.”</p><p class="did"><b>A stable detail area.</b> The canvas stays playful and a fixed card holds the dense personality comparison.</p></div></li>
+              <li><div><p class="said">“Don't make it only work for those 3… I might add Ayushi's report later.”</p><p class="did"><b>Designing for change.</b> Merging works for any group size and is data-driven, so new data needs no redesign.</p></div></li>
+              <li><div><p class="said">“Tab to one and use enter or space… if someone has reduced motion enabled…”</p><p class="did"><b>Accessibility as a requirement.</b> Keyboard support, a visible focus state, reduced motion and responsive bubble sizes.</p></div></li>
+              <li><div><p class="said">“Actually test everything… if you find bugs just fix them.”</p><p class="did"><b>Verification.</b> Automated Playwright runs covered dragging, merging, splitting, invalid merges, the 3-person case, mobile and keyboard.</p></div></li>
+            </ol>
+
+            <p>Other polish: each member got a colour so the bubbles don't rely on icons alone, hovering shows the name and interest, emoji replaced custom icons (🚗 🚲 🌙 📖), and a soft pop sound confirms clicks, merges and splits.</p>
+
+            <div class="todo">Add 2–3 screenshots or a short screen recording (GIF/MP4) of the final app: the canvas, a merge with the personality card, and a rejected merge. If the app is hosted, add a “Try the live app” button here.</div>
+          </section>
+
+          <!-- ===== HONESTY ===== -->
+          <section class="chapter" id="honesty">
+            <p class="eyebrow">08 · Data honesty</p>
+            <h2>The interface never invents a connection.</h2>
+            <p>The most important rule we set wasn't visual. A tool that generates code will happily generate plausible data too, so we made honesty an explicit requirement:</p>
+            <div class="grid three" style="margin-top:24px">
+              <div class="card reveal"><h4>No shared hobby?</h4><p class="muted small">Show a neutral 🤝 handshake. Don't make up a match. (Adrian and Prince have no shared hobby, and the app says so.)</p></div>
+              <div class="card reveal"><h4>Missing report?</h4><p class="muted small">Show “not enough data yet” and don't estimate a personality match.</p></div>
+              <div class="card reveal"><h4>The percentage</h4><p class="muted small">Computed only from the 30 ITP traits. A trait matches only when <em>every</em> merged member shares the same Low/Moderate/High level. If the real number is low, the app shows the low number.</p></div>
+            </div>
+            <p style="margin-top:24px">We also re-checked every trait against the original reports after finding a transcription error, because a wrong input would have made the percentage wrong.</p>
+          </section>
+
+          <!-- ===== CONTRIBUTION ===== -->
+          <section class="chapter" id="contribution">
+            <p class="eyebrow">09 · My contribution</p>
+            <h2>What I did.</h2>
+            <ul>
+              <li><strong>Led the AI-assisted build.</strong> I wrote and iterated the prompt sequence above. I turned the team's brainstorm into working behaviour one decision at a time and reviewed each result before the next step.</li>
+              <li><strong>Set the data-honesty rules.</strong> Merges only when a real shared interest exists, “not enough data” instead of guesses, and a match percentage computed from all 30 traits.</li>
+              <li><strong>Pushed for general solutions.</strong> I made sure merging scaled from pairs to any group size, so teammates' data could be added without rework.</li>
+              <li><strong>Accessibility and QA.</strong> Keyboard interaction, focus states, reduced motion, mobile sizing, and an automated test pass across every interaction state.</li>
+            </ul>
+            <div class="todo">Check these and add anything I missed: which concept sketches you drew, your part in the Lecture 6 brainstorm, and which sections of the report you wrote. Put your own sketches first. The rubric grades individual contribution.</div>
+          </section>
+
+          <!-- ===== REFLECTION ===== -->
+          <section class="chapter" id="reflection">
+            <p class="eyebrow">10 · Reflection</p>
+            <h2>What I'm taking forward.</h2>
+
+            <h3>Divergence works, but only if you compare.</h3>
+            <p>No single sketch showed us the problem. We only saw that every concept was four separate buttons when we laid them side by side. This matches Dow et al.'s finding that designers who prototype in parallel produce more divergent and better-rated work than those who iterate on one idea. Next time I'll write the design criteria <em>before</em> we sketch, so we can test sketches against them sooner.</p>
+
+            <h3>Motion carries meaning.</h3>
+            <p>Heider and Simmel showed that people read intentions and personality into simple moving shapes. Our bubbles relied on that: speed and wandering made a bubble feel like a person, without any extra text. I now see motion as part of the content, not decoration.</p>
+
+            <h3>Directness is the point.</h3>
+            <p>Dragging two people together to see what they share is direct manipulation in Shneiderman's sense: a visible object, a physical action and immediate feedback. It explained the idea better than any menu could. A rejected merge that bounces back taught the rules without an error message.</p>
+
+            <h3>AI changes what a prototype answers.</h3>
+            <p>Houde and Hill ask what a prototype is meant to test: role, look and feel, or implementation. AI-assisted building let us test all three in a week. The trade-off is that the AI can produce believable but false content, so being honest about the data became a design responsibility.</p>
+
+            <div class="callout">
+              <strong>If I did it again</strong>
+              <p>I'd run a quick hallway test with people outside the team. We tested functionality thoroughly but never checked whether a first-time visitor could tell that bubbles can merge without the tooltips.</p>
+            </div>
+
+            <h4 style="margin-top:40px">Further reading</h4>
+            <ul class="refs">
+              <li>Buxton, B. (2007). <em>Sketching User Experiences: Getting the Design Right and the Right Design.</em> Morgan Kaufmann.</li>
+              <li>Dow, S. P., Glassco, A., Kass, J., Schwarz, M., Schwartz, D. L., &amp; Klemmer, S. R. (2010). Parallel prototyping leads to better design results, more divergence, and increased self-efficacy. <em>ACM TOCHI, 17</em>(4).</li>
+              <li>Heider, F., &amp; Simmel, M. (1944). An experimental study of apparent behavior. <em>The American Journal of Psychology, 57</em>(2), 243–259.</li>
+              <li>Houde, S., &amp; Hill, C. (1997). What do prototypes prototype? In <em>Handbook of Human-Computer Interaction</em> (2nd ed.). Elsevier.</li>
+              <li>Shneiderman, B. (1983). Direct manipulation: A step beyond programming languages. <em>IEEE Computer, 16</em>(8), 57–69.</li>
+              <li>Anthropic. (2026). <em>Claude Code</em> [AI coding tool], used for implementation.</li>
+            </ul>
+
+            <nav class="pager" aria-label="Project navigation">
+              <a href="index.html#work">← All work</a>
+              <span class="muted">Project 2: coming soon</span>
+            </nav>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Prince Patel · CPSC 581, University of Calgary</span>
+      <span>Team: Adrian Aure, Mark Cawili, Prince Patel, Ayushi Patil</span>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+  <script src="js/bubbles.js"></script>
+</body>
+</html>
