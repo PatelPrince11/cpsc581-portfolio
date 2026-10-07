@@ -8,10 +8,10 @@
 
   // Colours and identity emoji match the shipped Project 1 app.
   const MEMBERS = {
-    prince: { name: 'Prince', emoji: '🏎️', color: 'var(--prince)' },
-    mark:   { name: 'Mark',   emoji: '🚴', color: 'var(--mark)' },
-    ayushi: { name: 'Ayushi', emoji: '🌙', color: 'var(--ayushi)' },
-    adrian: { name: 'Adrian', emoji: '📚', color: 'var(--adrian)' },
+    prince: { name: 'Prince', emoji: '🏎️', color: 'var(--prince)', count: 4 },
+    mark:   { name: 'Mark',   emoji: '🚴', color: 'var(--mark)', count: 5 },
+    ayushi: { name: 'Ayushi', emoji: '🌙', color: 'var(--ayushi)', count: 5 },
+    adrian: { name: 'Adrian', emoji: '📚', color: 'var(--adrian)', count: 5 },
   };
 
   // Movement values from the shipped app's MOVEMENT table, converted from
@@ -42,7 +42,9 @@
       el.className = 'bubble';
       el.style.setProperty('--c', m.color);
       el.setAttribute('aria-label', `${m.name}'s bubble. Drag or flick it, or press arrow keys to push it.`);
-      el.innerHTML = `<span aria-hidden="true">${m.emoji}</span><span class="tag">${m.name}</span>`;
+      el.innerHTML = `<span class="emo" aria-hidden="true">${m.emoji}</span>`
+        + `<span class="dots" aria-hidden="true">${'<i></i>'.repeat(m.count)}</span>`
+        + `<span class="tag" aria-hidden="true"><b>${m.name}</b><small>Drag to move · ${m.count} interests in the real app</small></span>`;
       root.appendChild(el);
       const heading = Math.random() * Math.PI * 2;
       return { id, el, x: 0, y: 0, vx: 0, vy: 0, r: 40, heading, drag: null, i };
@@ -96,7 +98,7 @@
         if (b.x < b.r) { b.x = b.r; b.vx = Math.abs(b.vx) * 0.8; b.heading = Math.PI - b.heading; }
         if (b.x > W - b.r) { b.x = W - b.r; b.vx = -Math.abs(b.vx) * 0.8; b.heading = Math.PI - b.heading; }
         if (b.y < b.r) { b.y = b.r; b.vy = Math.abs(b.vy) * 0.8; b.heading = -b.heading; }
-        if (b.y > H - b.r) { b.y = H - b.r; b.vy = -Math.abs(b.vy) * 0.8; b.heading = -b.heading; }
+        if (b.y > H - b.r - 20) { b.y = H - b.r - 20; b.vy = -Math.abs(b.vy) * 0.8; b.heading = -b.heading; }
       }
 
       // Soft separation so bubbles never sit on top of each other.

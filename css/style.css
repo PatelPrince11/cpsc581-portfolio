@@ -178,53 +178,87 @@ section.alt { background: var(--bg-alt); }
 .btn:active { transform: scale(0.97); }
 .btn.ghost { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1.5px currentColor; }
 
-/* Playground canvas (hero + movement demo) */
-.playground {
-  position: relative; height: clamp(300px, 46vw, 440px); margin-top: 40px;
-  border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow-lg);
-  overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none;
-  isolation: isolate;
-}
-.playground::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0.55;
+/* App scene: a faithful re-creation of the shipped Project 1 app's look
+   (warm backdrop with colour blobs, white canvas card, Manrope type).
+   It stays light in dark mode on purpose, because it shows a real artifact. */
+.app-scene {
+  --ink: #211f26; --ink-dim: #6c6a72; --app-line: rgba(33, 31, 38, 0.1); --card: #fcfcfb;
+  position: relative; isolation: isolate; overflow: hidden; margin-top: 40px;
+  padding: clamp(14px, 3vw, 36px); border-radius: var(--radius);
   background:
-    radial-gradient(40% 50% at 15% 20%, color-mix(in srgb, var(--prince) 18%, transparent), transparent 70%),
-    radial-gradient(40% 50% at 85% 25%, color-mix(in srgb, var(--mark) 18%, transparent), transparent 70%),
-    radial-gradient(40% 50% at 30% 90%, color-mix(in srgb, var(--adrian) 16%, transparent), transparent 70%),
-    radial-gradient(40% 50% at 80% 85%, color-mix(in srgb, var(--ayushi) 18%, transparent), transparent 70%);
+    radial-gradient(38% 55% at 6% 8%, rgba(227, 154, 136, 0.55), transparent 70%),
+    radial-gradient(30% 45% at 14% 30%, rgba(156, 127, 224, 0.42), transparent 70%),
+    radial-gradient(28% 40% at 2% 70%, rgba(231, 179, 201, 0.4), transparent 70%),
+    radial-gradient(38% 55% at 96% 96%, rgba(227, 162, 92, 0.5), transparent 70%),
+    radial-gradient(30% 45% at 88% 80%, rgba(156, 127, 224, 0.4), transparent 70%),
+    radial-gradient(26% 40% at 100% 50%, rgba(231, 166, 184, 0.35), transparent 70%),
+    #dad5cb;
+  color: var(--ink); color-scheme: light;
+  font-family: "Manrope", system-ui, sans-serif;
+  box-shadow: var(--shadow-lg);
+}
+.app-panel {
+  background: var(--card); border: 1px solid var(--app-line); border-radius: 20px;
+  box-shadow: 0 20px 46px rgba(33, 31, 38, 0.14); overflow: hidden;
+}
+.app-info {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 18px; border-top: 1px solid var(--app-line);
+  font-size: 12.5px; font-weight: 600; color: var(--ink-dim);
+}
+.app-info .left { display: flex; align-items: center; gap: 8px; color: var(--ink); }
+.dotcluster { width: 14px; height: 14px; position: relative; flex: none; }
+.dotcluster i { position: absolute; width: 7px; height: 7px; border-radius: 50%; }
+.dotcluster i:nth-child(1) { background: var(--prince); left: 0; top: 0; }
+.dotcluster i:nth-child(2) { background: var(--mark); right: 0; top: 0; }
+.dotcluster i:nth-child(3) { background: var(--ayushi); left: 0; bottom: 0; }
+.dotcluster i:nth-child(4) { background: var(--adrian); right: 0; bottom: 0; }
+@media (max-width: 520px) { .app-info .right { display: none; } }
+
+.playground {
+  position: relative; height: clamp(300px, 42vw, 460px);
+  overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none;
 }
 .playground .hint {
   position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%);
-  font-size: 0.8125rem; color: var(--text-2); pointer-events: none; white-space: nowrap;
-  background: var(--chrome); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-  padding: 6px 12px; border-radius: 999px; transition: opacity 400ms ease;
+  font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-dim); pointer-events: none; white-space: nowrap; transition: opacity 400ms ease;
 }
 .playground.touched .hint { opacity: 0; }
 
 .bubble {
   --c: var(--accent);
-  --size: clamp(64px, 9vw, 92px);
+  --size: clamp(70px, 8vw, 98px);
   position: absolute; left: 0; top: 0; width: var(--size); height: var(--size);
   border-radius: 50%; border: 0; padding: 0; cursor: grab; touch-action: none;
-  display: grid; place-items: center; font-size: calc(var(--size) * 0.42); line-height: 1;
-  color: var(--text);
+  display: grid; place-items: center; font-size: calc(var(--size) * 0.4); line-height: 1;
+  color: var(--ink, var(--text)); font-family: inherit;
   /* Same material as the shipped app: a solid fill with a soft top-left light */
   background: linear-gradient(160deg, color-mix(in srgb, var(--c) 82%, white 14%), var(--c));
   box-shadow: 0 8px 18px color-mix(in srgb, var(--c) 30%, transparent);
   will-change: transform;
-  transition: box-shadow 180ms ease, scale 160ms var(--ease-out);
+  transition: box-shadow 180ms ease, scale 160ms cubic-bezier(.3,.7,.4,1);
 }
-.bubble > span:first-child { filter: drop-shadow(0 1px 2px rgba(0,0,0,.18)); pointer-events: none; }
-.bubble:hover { scale: 1.06; box-shadow: 0 10px 24px color-mix(in srgb, var(--c) 40%, transparent); }
+.bubble > .emo { filter: drop-shadow(0 1px 2px rgba(0,0,0,.18)); pointer-events: none; }
+.bubble:hover { scale: 1.08; box-shadow: 0 10px 24px color-mix(in srgb, var(--c) 40%, transparent); }
 .bubble.grabbed { cursor: grabbing; scale: 1.12; box-shadow: 0 14px 30px color-mix(in srgb, var(--c) 45%, transparent); }
-.bubble .tag {
-  position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%) translateY(-4px);
-  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap;
-  color: var(--text); background: var(--chrome); padding: 4px 10px; border-radius: 999px;
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: var(--shadow-sm);
-  opacity: 0; pointer-events: none; transition: opacity 150ms ease, transform 200ms var(--ease-out);
+/* Interest dots under each bubble, as in the app */
+.bubble .dots {
+  position: absolute; top: calc(100% + 10px); left: 50%; translate: -50% 0;
+  display: flex; gap: 5px; pointer-events: none;
 }
-.bubble:hover .tag, .bubble:focus-visible .tag, .bubble.grabbed .tag { opacity: 1; transform: translateX(-50%) translateY(0); }
+.bubble .dots i { width: 5px; height: 5px; border-radius: 50%; background: rgba(33, 31, 38, 0.18); }
+/* Hover tooltip, styled like the app's */
+.bubble .tag {
+  position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translate(-50%, 4px);
+  padding: 10px 14px; border-radius: 10px; text-align: left; white-space: nowrap;
+  background: var(--card, var(--surface)); border: 1px solid var(--app-line, var(--line));
+  box-shadow: 0 12px 26px rgba(33, 31, 38, 0.16);
+  opacity: 0; pointer-events: none; transition: opacity 120ms ease, transform 200ms var(--ease-out);
+}
+.bubble .tag b { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.bubble .tag small { display: block; font-size: 12px; font-weight: 500; color: var(--ink-dim, var(--text-2)); }
+.bubble:hover .tag, .bubble:focus-visible .tag, .bubble.grabbed .tag { opacity: 1; transform: translate(-50%, 0); }
 .bubble:focus-visible { outline-offset: 4px; border-radius: 50%; }
 
 /* ---------- Cards ----------------------------------------------------------- */
@@ -263,8 +297,7 @@ a.project:active { transform: scale(0.99); transition-duration: 100ms; }
 .project .go { margin-top: auto; font-weight: 600; color: var(--accent); }
 .project .art { position: relative; min-height: 280px; overflow: hidden; }
 .project .art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.project.p1 .art { background: radial-gradient(60% 70% at 10% 10%, #e7b3c9, transparent 70%), radial-gradient(60% 70% at 95% 95%, #e3a25c88, transparent 70%), #dad5cb; }
-@media (prefers-color-scheme: dark) { .project.p1 .art { background: radial-gradient(60% 70% at 10% 10%, #4a2a3a, transparent 70%), radial-gradient(60% 70% at 95% 95%, #4a3018, transparent 70%), #1c1a1f; } }
+.project.p1 .art { background: radial-gradient(50% 60% at 8% 8%, rgba(227,154,136,.6), transparent 70%), radial-gradient(40% 50% at 20% 35%, rgba(156,127,224,.45), transparent 70%), radial-gradient(50% 60% at 95% 95%, rgba(227,162,92,.55), transparent 70%), radial-gradient(40% 50% at 85% 75%, rgba(156,127,224,.4), transparent 70%), #dad5cb; }
 .project.p1 .art .float {
   position: absolute; display: grid; place-items: center; border-radius: 50%;
   background: linear-gradient(160deg, color-mix(in srgb, var(--c) 82%, white 14%), var(--c));
@@ -509,7 +542,7 @@ dialog.lightbox .close:active { transform: scale(0.94); }
   .project.p1 .art .float { animation: none; }
 }
 @media (prefers-reduced-transparency: reduce) {
-  .nav, .bubble .tag, .playground .hint { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .nav { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 @media (prefers-contrast: more) {
   :root { --line: rgba(127, 127, 127, 0.6); --text-2: var(--text); }
@@ -517,7 +550,7 @@ dialog.lightbox .close:active { transform: scale(0.94); }
 }
 
 @media print {
-  .nav, .toc, .playground, .hero-actions, .skip { display: none !important; }
+  .nav, .toc, .app-scene, .hero-actions, .skip { display: none !important; }
   .js .reveal { opacity: 1; transform: none; }
   section { padding: 24px 0; }
 }

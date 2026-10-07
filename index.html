@@ -8,7 +8,10 @@
   <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%230066cc'/><circle cx='36' cy='34' r='9' fill='white' opacity='.85'/></svg>">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -37,8 +40,13 @@
           <a class="btn ghost" href="#philosophy">My design philosophy</a>
         </div>
 
-        <div class="playground" id="hero-pg" data-playground data-mode="personality" aria-label="Interactive demo: four draggable bubbles from Project 1">
-          <span class="hint">These are the four buttons from Project 1. Grab one and flick it.</span>
+        <div class="app-scene">
+          <div class="app-panel">
+            <div class="playground" id="hero-pg" data-playground data-mode="personality" aria-label="Interactive demo: the four member bubbles from Project 1">
+              <span class="hint">Grab a bubble and flick it</span>
+            </div>
+            <div class="app-info"><span class="left"><span class="dotcluster" aria-hidden="true"><i></i><i></i><i></i><i></i></span>A Family of Buttons · Live canvas</span><span class="right">CPSC 581 · Fall 2026</span></div>
+          </div>
         </div>
       </div>
     </header>
@@ -192,7 +200,7 @@
     </div>
   </footer>
 
-  <script src="js/site.js"></script>
-  <script src="js/bubbles.js"></script>
+  <script src="js/site.js?v=3"></script>
+  <script src="js/bubbles.js?v=3"></script>
 </body>
 </html>
