@@ -18,10 +18,11 @@
   --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.04), 0 18px 48px rgba(0, 0, 0, 0.10);
 
   /* member colours (Project 1) */
-  --prince: #ff6b4a;
-  --mark: #2f8cff;
-  --ayushi: #9b6bff;
-  --adrian: #1fb57a;
+  --prince: #4c6fe0;
+  --mark: #e39a4e;
+  --ayushi: #8b6fe0;
+  --adrian: #2fae93;
+  --team: #c9972b;
 
   /* verdict chips */
   --yes: #1f9d55;
@@ -202,32 +203,20 @@ section.alt { background: var(--bg-alt); }
 
 .bubble {
   --c: var(--accent);
-  --size: clamp(64px, 11vw, 96px);
+  --size: clamp(64px, 9vw, 92px);
   position: absolute; left: 0; top: 0; width: var(--size); height: var(--size);
   border-radius: 50%; border: 0; padding: 0; cursor: grab; touch-action: none;
   display: grid; place-items: center; font-size: calc(var(--size) * 0.42); line-height: 1;
   color: var(--text);
-  background:
-    radial-gradient(circle at 32% 26%, rgba(255,255,255,0.95) 0 7%, rgba(255,255,255,0) 18%),
-    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--c) 6%, transparent) 55%, color-mix(in srgb, var(--c) 34%, transparent) 100%);
-  box-shadow:
-    inset 0 0 0 2px color-mix(in srgb, var(--c) 55%, transparent),
-    inset -6px -10px 18px color-mix(in srgb, var(--c) 22%, transparent),
-    0 10px 24px color-mix(in srgb, var(--c) 22%, transparent);
-  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  /* Same material as the shipped app: a solid fill with a soft top-left light */
+  background: linear-gradient(160deg, color-mix(in srgb, var(--c) 82%, white 14%), var(--c));
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--c) 30%, transparent);
   will-change: transform;
-  transition: box-shadow 150ms ease;
+  transition: box-shadow 180ms ease, scale 160ms var(--ease-out);
 }
-@media (prefers-color-scheme: dark) {
-  /* Dimmer specular highlight and a lighter interior so dark emoji stay legible */
-  .bubble { background:
-    radial-gradient(circle at 32% 26%, rgba(255,255,255,0.55) 0 6%, rgba(255,255,255,0) 16%),
-    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--c) 22%, #3a3a3c) 55%, color-mix(in srgb, var(--c) 40%, transparent) 100%); }
-}
-.bubble.grabbed { cursor: grabbing; box-shadow:
-    inset 0 0 0 3px var(--c),
-    inset -6px -10px 18px color-mix(in srgb, var(--c) 22%, transparent),
-    0 18px 40px color-mix(in srgb, var(--c) 35%, transparent); }
+.bubble > span:first-child { filter: drop-shadow(0 1px 2px rgba(0,0,0,.18)); pointer-events: none; }
+.bubble:hover { scale: 1.06; box-shadow: 0 10px 24px color-mix(in srgb, var(--c) 40%, transparent); }
+.bubble.grabbed { cursor: grabbing; scale: 1.12; box-shadow: 0 14px 30px color-mix(in srgb, var(--c) 45%, transparent); }
 .bubble .tag {
   position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%) translateY(-4px);
   font-size: 0.75rem; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap;
@@ -274,14 +263,15 @@ a.project:active { transform: scale(0.99); transition-duration: 100ms; }
 .project .go { margin-top: auto; font-weight: 600; color: var(--accent); }
 .project .art { position: relative; min-height: 280px; overflow: hidden; }
 .project .art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.project.p1 .art { background: linear-gradient(135deg, #fff1ec, #eef4ff 55%, #f2ecff); }
-@media (prefers-color-scheme: dark) { .project.p1 .art { background: linear-gradient(135deg, #2a1712, #0e1a2c 55%, #1b1430); } }
+.project.p1 .art { background: radial-gradient(60% 70% at 10% 10%, #e7b3c9, transparent 70%), radial-gradient(60% 70% at 95% 95%, #e3a25c88, transparent 70%), #dad5cb; }
+@media (prefers-color-scheme: dark) { .project.p1 .art { background: radial-gradient(60% 70% at 10% 10%, #4a2a3a, transparent 70%), radial-gradient(60% 70% at 95% 95%, #4a3018, transparent 70%), #1c1a1f; } }
 .project.p1 .art .float {
   position: absolute; display: grid; place-items: center; border-radius: 50%;
-  background: radial-gradient(circle at 32% 26%, rgba(255,255,255,.9) 0 7%, transparent 18%), color-mix(in srgb, var(--c) 14%, var(--surface));
-  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--c) 55%, transparent), 0 12px 30px color-mix(in srgb, var(--c) 25%, transparent);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--c) 82%, white 14%), var(--c));
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--c) 32%, transparent);
   animation: drift 9s ease-in-out infinite alternate;
 }
+.project.p1 .art .float > * { filter: drop-shadow(0 1px 2px rgba(0,0,0,.18)); }
 @keyframes drift { to { transform: translate(var(--dx, 10px), var(--dy, -14px)); } }
 
 .project.soon { grid-template-columns: 1fr; min-height: 0; background: transparent; box-shadow: inset 0 0 0 1.5px var(--line); }
@@ -374,6 +364,34 @@ figure { margin: 0; }
 .fig.contain img { aspect-ratio: 4 / 3; object-fit: contain; padding: 12px; }
 figcaption { font-size: 0.8125rem; color: var(--text-2); margin-top: 10px; line-height: 1.45; }
 figcaption b { color: var(--text); font-weight: 600; }
+
+/* Live embed of the shipped app, framed as a browser window */
+.device {
+  margin-top: 48px; border-radius: 18px; overflow: hidden; background: var(--surface);
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--line);
+}
+.device .bar {
+  display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+  background: var(--bg-alt); border-bottom: 1px solid var(--line); font-size: 0.8125rem; color: var(--text-2);
+}
+.device .lights { display: flex; gap: 6px; flex: none; }
+.device .lights i { width: 11px; height: 11px; border-radius: 50%; background: var(--line); }
+.device .lights i:nth-child(1) { background: #ff5f57; } .device .lights i:nth-child(2) { background: #febc2e; } .device .lights i:nth-child(3) { background: #28c840; }
+.device .url {
+  flex: 1; min-width: 0; text-align: center; padding: 4px 12px; border-radius: 8px; background: var(--surface);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+.device .open { flex: none; font-weight: 600; white-space: nowrap; }
+.device iframe { display: block; width: 100%; height: 760px; border: 0; background: #dad5cb; }
+@media (max-width: 980px) { .device iframe { height: 680px; } }
+@media (max-width: 560px) { .device .url { display: none; } .device .bar { justify-content: space-between; } .device iframe { height: 600px; } }
+.embed-note { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 14px; font-size: 0.875rem; color: var(--text-2); }
+
+/* Screenshot gallery */
+.shots { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); margin: 28px 0; }
+.shots .fig img { aspect-ratio: 8 / 7; object-fit: cover; object-position: top; }
+.shots .wide { grid-column: 1 / -1; }
+.shots .wide .fig img { aspect-ratio: auto; }
 
 /* Concept cards */
 .concept { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
