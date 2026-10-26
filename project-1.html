@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A Family of Buttons — Prince Patel</title>
+  <title>A Family of Buttons · Prince Patel</title>
   <meta name="description" content="CPSC 581 Project 1 case study: four buttons that interact to show team dynamics. Five concepts, one decision, a floating-bubble prototype.">
   <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#121014" media="(prefers-color-scheme: dark)">
@@ -11,7 +11,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <script>
+    // Pick the theme before first paint: saved choice, else the system setting.
+    (function () { var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+      document.documentElement.dataset.theme = t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); })();
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -28,6 +33,10 @@
         <li><a href="index.html#growth">Growth</a></li>
         <li><a href="index.html#about">About</a></li>
       </ul>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+      </button>
     </div>
   </nav>
 
@@ -36,11 +45,11 @@
       <div class="wrap">
         <p class="eyebrow"><a href="index.html#work">← All work</a> · Project 1</p>
         <h1 class="display">A Family <em>of Buttons</em></h1>
-        <p class="lead">The brief: design one button per teammate, and make the buttons interact so they reveal our team's dynamics. We made bubbles that float, collide, merge into shared interests, and move according to each person's personality.</p>
+        <p class="lead">The brief asked for one button per teammate, with the buttons reacting to each other to show how our team works. We made bubbles that float, bump into each other, merge to show shared interests, and move according to each person's personality results.</p>
 
         <dl class="facts">
           <div><dt>Team</dt><dd>Adrian Aure, Mark Cawili, Prince Patel, Ayushi Patil</dd></div>
-          <div><dt>My role</dt><dd>Concept development, AI-assisted implementation lead, testing</dd></div>
+          <div><dt>My role</dt><dd>Concept work, the AI-assisted build (lead), testing</dd></div>
           <div><dt>Live app</dt><dd><a href="https://markcawili.github.io/bubbles.github.io/" target="_blank" rel="noopener">markcawili.github.io/bubbles.github.io ↗</a></dd></div>
           <div><dt>Timeline</dt><dd>1 week, Sept 2026</dd></div>
           <div><dt>Methods</dt><dd>Parallel concept sketching, storyboards, criteria-based evaluation, iterative prototyping</dd></div>
@@ -60,7 +69,7 @@
           <iframe data-src="https://markcawili.github.io/bubbles.github.io/" title="A Family of Buttons: the live Project 1 app" allow="autoplay"></iframe>
           <noscript><iframe src="https://markcawili.github.io/bubbles.github.io/" title="A Family of Buttons: the live Project 1 app"></iframe></noscript>
         </div>
-        <p class="embed-note"><span>This is the real app, running live. Hover a bubble, click to cycle interests, and drag two together to merge them.</span><span>Sound is on, so turn it up.</span></p>
+        <p class="embed-note"><span>This is the real app, running live. Hover a bubble, click it to cycle interests, or drag two together to merge them.</span><span>The app has sound.</span></p>
       </div>
     </header>
 
@@ -86,14 +95,14 @@
           <section class="chapter" id="brief">
             <p class="eyebrow">01 · The brief</p>
             <h2>Four buttons. <em>One team.</em></h2>
-            <p>The assignment set two constraints: <strong>exactly one button per team member</strong>, and the buttons had to <strong>show team dynamics</strong>, meaning similarities, differences and relationships, not just four profiles. Everything had to be brainstormed, built, polished and documented in one week while four people worked around other classes and jobs.</p>
+            <p>The assignment had two constraints. There had to be exactly one button per team member, and together the buttons had to show the team's dynamics: what we share, how we differ and how we relate. We had one week to brainstorm, build, polish and document it, around four people's other classes and jobs.</p>
           </section>
 
           <!-- ===== DIVERGE ===== -->
           <section class="chapter" id="diverge">
             <p class="eyebrow">02 · Diverge</p>
             <h2>Five concepts, <em>sketched in parallel.</em></h2>
-            <p>Before committing to anything we explored several directions on paper. Each storyboard walks through the interaction step by step, so we could judge the experience and not just a single screen.</p>
+            <p>Before committing to anything, we sketched several directions on paper. Each storyboard walks through the interaction step by step, so we could judge it from start to finish.</p>
 
             <div class="grid three" style="margin-top:32px">
               <figure class="card concept reveal">
@@ -151,24 +160,24 @@
           <section class="chapter" id="pattern">
             <p class="eyebrow">03 · The pattern</p>
             <h2>Every idea was <em>four separate buttons.</em></h2>
-            <p>Comparing the concepts side by side showed a problem none of them revealed alone. Puzzle pieces, mini-sites and mountain peaks look different, but they share the same interaction: <em>pick one person and see information about that person.</em> None of them let the buttons interact with each other, which is where team dynamics would appear.</p>
+            <p>Putting the concepts side by side showed a problem we hadn't seen in any one of them. Puzzle pieces, mini-sites and mountain peaks look different, but the interaction is the same: pick one person and read about that person. None of them let the buttons act on each other, and that's where team dynamics would show up.</p>
 
             <p class="quote">The visuals were different. The interaction was the same every time.</p>
 
-            <p>We turned that insight into explicit design criteria. We needed an interaction where:</p>
+            <p>So we wrote down what the interaction needed:</p>
             <ul>
-              <li>exactly <strong>four primary buttons</strong> represent the four members;</li>
-              <li>each button says <strong>something about its member</strong>;</li>
-              <li>the buttons can <strong>directly interact</strong> with one another;</li>
-              <li><strong>similarities and differences emerge</strong> from those interactions.</li>
+              <li>four primary buttons, one per member;</li>
+              <li>each button says something about its member;</li>
+              <li>the buttons can act on each other directly;</li>
+              <li>similarities and differences come out of those interactions.</li>
             </ul>
           </section>
 
           <!-- ===== CONVERGE ===== -->
           <section class="chapter" id="converge">
             <p class="eyebrow">04 · Converge</p>
-            <h2>Choosing with criteria, <em>not taste.</em></h2>
-            <p>We scored every concept against three questions. This meant giving up some of our most visually creative ideas. That was hard, but it was the right call.</p>
+            <h2>Scoring the <em>five concepts.</em></h2>
+            <p>We scored every concept against three questions. That meant dropping some of our best-looking ideas. It was hard to do, and I still think we got it right.</p>
 
             <div class="matrix-wrap reveal">
               <table class="matrix">
@@ -191,7 +200,7 @@
           <section class="chapter" id="refine">
             <p class="eyebrow">05 · Refine</p>
             <h2>From four bubbles <em>to a family.</em></h2>
-            <p>The first bubble concept still described individuals. After Lecture 6 we asked what should happen when two bubbles touch, and that question gave the concept its point.</p>
+            <p>The first bubble concept still described individuals. After Lecture 6 we asked what should happen when two bubbles touch, and the answer turned it into a concept about relationships.</p>
 
             <ol class="flow" aria-label="Interaction model">
               <li>Individual bubble</li><li class="arrow" aria-hidden="true">→</li>
@@ -204,25 +213,25 @@
             <div class="grid two" style="margin-top:8px">
               <figure class="reveal">
                 <button class="fig contain" type="button"><img src="assets/p1/fig5b-bubbles-cycle.png" alt="Sketch: clicking Mark's bike bubble pops it, and a new bubble with a plant icon rises from the bottom, cycling through interests." loading="lazy"></button>
-                <figcaption><b>Click to cycle.</b> A bubble pops and a new one rises with the member's next interest.</figcaption>
+                <figcaption>Clicking a bubble pops it, and a new one rises with that member's next interest.</figcaption>
               </figure>
               <figure class="reveal">
                 <button class="fig contain" type="button"><img src="assets/p1/fig7-merge.png" alt="Sketch: dragging Mark's bike bubble into Prince's cassette bubble pops both and spawns a bigger bubble with a laptop icon labelled Tech." loading="lazy"></button>
-                <figcaption><b>Drag to merge.</b> Two members who share something become one bigger bubble showing what they share.</figcaption>
+                <figcaption>Dragging two members together merges them into a bigger bubble that shows what they share.</figcaption>
               </figure>
               <figure class="reveal">
                 <button class="fig contain" type="button"><img src="assets/p1/fig8-pop.png" alt="Sketch: clicking the merged Tech bubble pops it back into the members' individual bubbles." loading="lazy"></button>
-                <figcaption><b>Click to split.</b> Popping a merged bubble returns each member to their own bubble.</figcaption>
+                <figcaption>Clicking a merged bubble pops it, and each member gets their own bubble back.</figcaption>
               </figure>
               <figure class="reveal">
                 <button class="fig contain" type="button"><img src="assets/p1/fig6-adrian-sketch.jpg" alt="Adrian's in-class pencil sketch of combinations: dragon plus book becomes a Star Wars scene; car plus bike becomes a road scene; computer plus food becomes a digital art easel." loading="lazy"></button>
-                <figcaption><b>In-class collaboration.</b> Adrian's sketch exploring what each combination could produce.</figcaption>
+                <figcaption>Adrian's sketch from class, trying out what each combination could produce.</figcaption>
               </figure>
             </div>
 
             <div class="callout">
               <strong>Adding a second layer of data</strong>
-              <p>Hobbies are easy to grasp but shallow. We added results from our ITP personality survey, so a merge now shows <em>what</em> members enjoy together and also <em>how alike</em> they are across 30 personality traits.</p>
+              <p>Hobbies are easy to read but don't say much. We added our ITP personality survey results, so a merge shows what members enjoy together and how alike they are across 30 personality traits.</p>
             </div>
           </section>
 
@@ -230,14 +239,14 @@
           <section class="chapter" id="movement">
             <p class="eyebrow">06 · Personality in motion</p>
             <h2>Each bubble moves <em>like its owner.</em></h2>
-            <p>At first all four bubbles used the same random drift. Colour and icon told them apart, but their <em>behaviour</em> said nothing about the people. So we used the same movement algorithm with different parameters for each member, chosen from personality traits that translate naturally into motion:</p>
+            <p>At first all four bubbles drifted the same way. Colour and icon told them apart, but the motion said nothing about the people. So we kept one movement algorithm and gave each member their own settings, based on two personality traits that map well onto motion:</p>
 
             <div class="spec">
-              <div class="k">Activity Level</div><div class="v">→ <strong>Speed.</strong> Minimum and maximum travel speed. Mark's High Activity result makes his bubble the fastest by far (0.40–0.55 px/frame against Prince's calm 0.10–0.16).</div>
-              <div class="k">Excitement-Seeking</div><div class="v">→ <strong>Wandering.</strong> How often a bubble changes direction and how sharply it turns. Prince and Mark change course often, while Ayushi and Adrian hold a steadier line.</div>
+              <div class="k">Activity Level</div><div class="v">→ <strong>Speed.</strong> Minimum and maximum travel speed. Mark's High Activity result makes his bubble by far the fastest (0.40–0.55 px per frame, against Prince's 0.10–0.16).</div>
+              <div class="k">Excitement-Seeking</div><div class="v">→ <strong>Wandering.</strong> How often a bubble changes direction and how sharply it turns. Prince and Mark change course often. Ayushi and Adrian hold a steadier line.</div>
             </div>
 
-            <p>Toggle between the two versions below to see the difference.</p>
+            <p>Switch between the two versions below to compare them.</p>
             <div class="app-scene" style="margin-top:20px">
               <div class="app-panel">
                 <div class="playground" id="mv-pg" data-playground data-mode="uniform" aria-label="Movement comparison demo" style="height:clamp(260px,36vw,380px)"></div>
@@ -248,11 +257,11 @@
               <button type="button" data-mode="uniform" aria-pressed="true">Same for everyone</button>
               <button type="button" data-mode="personality" aria-pressed="false">Personality-driven</button>
             </div>
-            <p class="small muted" style="margin-top:12px">Re-created for this portfolio using the exact speed and wander values from the shipped app. “Same for everyone” uses the average of the four.</p>
+            <p class="small muted" style="margin-top:12px">Re-created for this portfolio with the exact speed and wander values from the app. "Same for everyone" uses the average of the four.</p>
 
             <div class="callout">
               <strong>A deliberate limit</strong>
-              <p>We considered mapping Gregariousness to attraction between bubbles, which was one of our clearest differences. But it would have needed real physics and a shakier psychological interpretation. All four of us also scored “Moderate” on Excitement-Seeking, so we tuned those values until the differences were <em>perceptible</em>, and we say plainly that they're not a literal conversion of the scores.</p>
+              <p>We thought about mapping Gregariousness to how strongly bubbles pull on each other, since it was one of our clearest differences. That would have needed real physics and a shakier reading of the data. All four of us also scored Moderate on Excitement-Seeking, so we tuned those values until the differences were visible. They aren't a literal conversion of the scores, and we say so.</p>
             </div>
           </section>
 
@@ -260,46 +269,46 @@
           <section class="chapter" id="build">
             <p class="eyebrow">07 · Build</p>
             <h2>Prototyping <em>by conversation.</em></h2>
-            <p>We built the app with Claude Code, giving it the team's brainstorm document as the starting point and then refining step by step with prompts and manual edits. Our prompts were mostly design decisions. These are the turning points:</p>
+            <p>We built the app with Claude Code. We gave it the team's brainstorm document as a starting spec, then refined the result one prompt at a time, with some edits by hand. Most of our prompts were design decisions. These were the turning points:</p>
 
             <figure class="reveal" style="max-width:560px;margin:24px 0">
               <button class="fig" type="button"><img src="assets/p1/fig4-brainstorm-doc.png" alt="Team brainstorm document describing the Bubbles concept: four member bubbles, click to cycle interests, hover for name, drag together to merge into a bigger bubble with a shared interest, click to pop apart." loading="lazy"></button>
-              <figcaption><b>The starting spec.</b> The team's brainstorm document, given to the AI as the base for the build.</figcaption>
+              <figcaption>The team's brainstorm document, which we gave the AI as the starting spec.</figcaption>
             </figure>
 
             <ol class="prompts">
-              <li><div><p class="said">“They feel too static… can I actually drag them together and have them merge?”</p><p class="did"><b>Direct manipulation first.</b> Real drift and real drag-to-merge, instead of a static grid of icons.</p></div></li>
-              <li><div><p class="said">“It should only merge if they actually have something in common… maybe have it bounce back.”</p><p class="did"><b>Feedback for invalid actions.</b> A rejected merge bounces back, so the user learns that some people don't share that interest.</p></div></li>
-              <li><div><p class="said">“Instead of expanding the bubble… have a card underneath that changes when I merge people.”</p><p class="did"><b>A stable detail area.</b> The canvas stays playful and a fixed card holds the dense personality comparison.</p></div></li>
-              <li><div><p class="said">“Don't make it only work for those 3… I might add Ayushi's report later.”</p><p class="did"><b>Designing for change.</b> Merging works for any group size and is data-driven, so new data needs no redesign.</p></div></li>
-              <li><div><p class="said">“Tab to one and use enter or space… if someone has reduced motion enabled…”</p><p class="did"><b>Accessibility as a requirement.</b> Keyboard support, a visible focus state, reduced motion and responsive bubble sizes.</p></div></li>
-              <li><div><p class="said">“Actually test everything… if you find bugs just fix them.”</p><p class="did"><b>Verification.</b> Automated Playwright runs covered dragging, merging, splitting, invalid merges, the 3-person case, mobile and keyboard.</p></div></li>
+              <li><div><p class="said">"They feel too static... can I actually drag them together and have them merge?"</p><p class="did">This got us real drift and drag-to-merge.</p></div></li>
+              <li><div><p class="said">"It should only merge if they actually have something in common... maybe have it bounce back."</p><p class="did">A rejected merge bounces back, which tells the user those two people don't share that interest.</p></div></li>
+              <li><div><p class="said">"Instead of expanding the bubble... have a card underneath that changes when I merge people."</p><p class="did">The canvas stays playful, and a fixed card below it holds the detailed personality comparison.</p></div></li>
+              <li><div><p class="said">"Don't make it only work for those 3... I might add Ayushi's report later."</p><p class="did">Merging works for any group size and reads from the data, so adding a teammate's report needed no redesign.</p></div></li>
+              <li><div><p class="said">"Tab to one and use enter or space... if someone has reduced motion enabled..."</p><p class="did">This added keyboard support, a visible focus state, reduced motion and bubble sizes that scale with the screen.</p></div></li>
+              <li><div><p class="said">"Actually test everything... if you find bugs just fix them."</p><p class="did">Automated Playwright runs covered dragging, merging, splitting, invalid merges, the three-person case, mobile and keyboard.</p></div></li>
             </ol>
 
-            <p>Other polish: each member got a colour so the bubbles don't rely on icons alone, hovering shows the name and interest, emoji replaced custom icons (🏎️ 🚴 🌙 📚), and a soft pop sound confirms clicks, merges and splits.</p>
+            <p>Smaller changes: each member got a colour so the bubbles don't rely on icons alone, hovering shows the name and current interest, emoji replaced our custom icons (🏎️ 🚴 🌙 📚), and a short pop sound plays on clicks, merges and splits.</p>
 
 <h3 style="margin-top:48px">The result</h3>
-            <p>These were captured from the live app. You can also <a href="https://markcawili.github.io/bubbles.github.io/" target="_blank" rel="noopener">open it yourself ↗</a>.</p>
+            <p>I captured these from the live app. You can also <a href="https://markcawili.github.io/bubbles.github.io/" target="_blank" rel="noopener">open it yourself ↗</a>.</p>
             <div class="shots">
               <figure class="wide reveal">
                 <button class="fig" type="button"><img src="assets/p1/app/01-landing.jpg" alt="The live app's landing view: headline 'Four people. One connected team.' beside a canvas with four coloured bubbles: a race car, a cyclist, a moon and books." loading="lazy"></button>
-                <figcaption><b>Landing.</b> Four member bubbles drift around a live canvas, each with its own colour, identity emoji and dots showing how many interests it holds.</figcaption>
+                <figcaption>The landing view. Four member bubbles drift around the canvas, each with its own colour, emoji and a row of dots for that person's interests.</figcaption>
               </figure>
               <figure class="reveal">
                 <button class="fig" type="button"><img src="assets/p1/app/02-hover-cycle.jpg" alt="Hovering Prince's blue bubble shows a tooltip reading 'Prince, Cars'; the first of four dots under the bubble is active." loading="lazy"></button>
-                <figcaption><b>Hover &amp; click.</b> The tooltip names the person and interest, and the dots show where you are in their list.</figcaption>
+                <figcaption>Hovering shows the person and their current interest. The dots show where you are in their list.</figcaption>
               </figure>
               <figure class="reveal">
                 <button class="fig" type="button"><img src="assets/p1/app/03-merge-pair.jpg" alt="Mark and Prince merged into one larger gold bubble with a volleyball, labelled Mark + Prince." loading="lazy"></button>
-                <figcaption><b>Merge.</b> Mark + Prince become one larger bubble showing their real shared interest, volleyball.</figcaption>
+                <figcaption>Mark and Prince merge into one larger bubble showing the interest they actually share: volleyball.</figcaption>
               </figure>
               <figure class="reveal">
                 <button class="fig" type="button"><img src="assets/p1/app/04-card-pair.jpg" alt="Connection card for Mark and Prince: 73% personality match, 22 of 30 Big Five traits align, with each trait plotted on a low–moderate–high scale and shared traits tagged." loading="lazy"></button>
-                <figcaption><b>The connection card.</b> 73% match: 22 of 30 traits fall in the same band, and each trait is plotted for both people.</figcaption>
+                <figcaption>Their connection card: a 73% match, with 22 of 30 traits in the same band. Each trait is plotted for both people.</figcaption>
               </figure>
               <figure class="reveal">
                 <button class="fig" type="button"><img src="assets/p1/app/06-card-three.jpg" alt="Connection card for Mark, Prince and Adrian, labelled Team Core: 37% personality match, 11 of 30 traits align." loading="lazy"></button>
-                <figcaption><b>Three-way merge.</b> Adding Adrian drops the match to 37%, because a trait only counts when all three share it. The app shows the lower number as it is.</figcaption>
+                <figcaption>Adding Adrian drops the match to 37%, because a trait only counts when all three share it. The app shows the lower number.</figcaption>
               </figure>
             </div>
           </section>
@@ -308,26 +317,23 @@
           <section class="chapter" id="honesty">
             <p class="eyebrow">08 · Data honesty</p>
             <h2>The interface never <em>invents a connection.</em></h2>
-            <p>The most important rule we set wasn't visual. A tool that generates code will happily generate plausible data too, so we made honesty an explicit requirement:</p>
+            <p>Our most important rule was about the data. A tool that writes code will just as easily write believable fake data, so we made honesty a requirement:</p>
             <div class="grid three" style="margin-top:24px">
-              <div class="card reveal"><h4>No shared hobby?</h4><p class="muted small">Show a neutral 🤝 handshake. Don't make up a match. (Adrian and Prince have no shared hobby, and the app says so.)</p></div>
-              <div class="card reveal"><h4>Missing report?</h4><p class="muted small">While reports were still coming in, we required the app to say “not enough data yet” and never estimate a match.</p></div>
-              <div class="card reveal"><h4>The percentage</h4><p class="muted small">Computed only from the 30 ITP traits. A trait matches only when <em>every</em> merged member shares the same Low/Moderate/High level. Mark + Prince show 73%. Add Adrian and it falls to 37%, and the app shows that.</p></div>
+              <div class="card reveal"><h4>No shared hobby?</h4><p class="muted small">Show a neutral 🤝 handshake and don't make up a match. Adrian and Prince have no shared hobby, and the app says so.</p></div>
+              <div class="card reveal"><h4>Missing report?</h4><p class="muted small">While reports were still coming in, the app had to say "not enough data yet" and never estimate a match.</p></div>
+              <div class="card reveal"><h4>The percentage</h4><p class="muted small">It comes only from the 30 ITP traits. A trait counts as a match when every merged member has the same Low, Moderate or High level. Mark and Prince show 73%. Add Adrian and it drops to 37%, and the app shows 37%.</p></div>
             </div>
-            <p style="margin-top:24px">We also re-checked every trait against the original reports after finding a transcription error, because a wrong input would have made the percentage wrong.</p>
+            <p style="margin-top:24px">After we found one trait entered wrong, we re-checked every trait against the original reports. A wrong input would have made the percentage wrong.</p>
           </section>
 
           <!-- ===== CONTRIBUTION ===== -->
           <section class="chapter" id="contribution">
             <p class="eyebrow">09 · My contribution</p>
             <h2>What <em>I</em> did.</h2>
-            <ul>
-              <li><strong>Led the AI-assisted build.</strong> I wrote and iterated the prompt sequence above. I turned the team's brainstorm into working behaviour one decision at a time and reviewed each result before the next step.</li>
-              <li><strong>Set the data-honesty rules.</strong> Merges only when a real shared interest exists, “not enough data” instead of guesses, and a match percentage computed from all 30 traits.</li>
-              <li><strong>Pushed for general solutions.</strong> I made sure merging scaled from pairs to any group size, so teammates' data could be added without rework.</li>
-              <li><strong>Accessibility and QA.</strong> Keyboard interaction, focus states, reduced motion, mobile sizing, and an automated test pass across every interaction state.</li>
-            </ul>
-            <div class="todo">Check these and add anything I missed: which concept sketches you drew, your part in the Lecture 6 brainstorm, and which sections of the report you wrote. Put your own sketches first. The rubric grades individual contribution.</div>
+            <p>I led the AI-assisted build. I wrote and revised the prompt sequence above. It took the team's brainstorm to working behaviour one decision at a time, and I checked each result before moving on.</p>
+            <p>I set the rules for honest data. Bubbles merge only when a real shared interest exists, missing data gets reported instead of guessed, and the match percentage comes from all 30 traits.</p>
+            <p>I pushed for merging to work with any number of people, so teammates' data could be added later without rework.</p>
+            <p>I handled accessibility and testing: keyboard control, focus states, reduced motion, sizing on phones, and an automated test pass over every interaction state.</p>
           </section>
 
           <!-- ===== REFLECTION ===== -->
@@ -335,21 +341,21 @@
             <p class="eyebrow">10 · Reflection</p>
             <h2>What I'm <em>taking forward.</em></h2>
 
-            <h3>Divergence works, but only if you compare.</h3>
-            <p>No single sketch showed us the problem. We only saw that every concept was four separate buttons when we laid them side by side. This matches Dow et al.'s finding that designers who prototype in parallel produce more divergent and better-rated work than those who iterate on one idea. Next time I'll write the design criteria <em>before</em> we sketch, so we can test sketches against them sooner.</p>
+            <h3>Going wide only helps if you compare.</h3>
+            <p>No single sketch showed us the problem. We only saw that every concept was four separate buttons once we put them side by side. Dow et al. (2010) found something similar: designers who prototyped several ideas in parallel produced more varied and better-rated work than designers who refined one. Next time I'll write the design criteria before we sketch, so we can check the sketches against them earlier.</p>
 
             <h3>Motion carries meaning.</h3>
-            <p>Heider and Simmel showed that people read intentions and personality into simple moving shapes. Our bubbles relied on that: speed and wandering made a bubble feel like a person, without any extra text. I now see motion as part of the content, not decoration.</p>
+            <p>Heider and Simmel (1944) showed that people read intentions and personality into simple moving shapes. Our bubbles relied on that. Speed and wandering made a bubble feel like a person without any extra text. I now treat motion as content, the same way I treat text or colour.</p>
 
-            <h3>Directness is the point.</h3>
-            <p>Dragging two people together to see what they share is direct manipulation in Shneiderman's sense: a visible object, a physical action and immediate feedback. It explained the idea better than any menu could. A rejected merge that bounces back taught the rules without an error message.</p>
+            <h3>Dragging explains itself.</h3>
+            <p>Dragging two people together to see what they share is direct manipulation as Shneiderman (1983) describes it: you act on a visible object and see the result right away. It explained the idea better than a menu would have. A rejected merge that bounced back taught the rule without an error message.</p>
 
             <h3>AI changes what a prototype answers.</h3>
-            <p>Houde and Hill ask what a prototype is meant to test: role, look and feel, or implementation. AI-assisted building let us test all three in a week. The trade-off is that the AI can produce believable but false content, so being honest about the data became a design responsibility.</p>
+            <p>Houde and Hill (1997) ask what a prototype is meant to test: its role, its look and feel, or its implementation. Building with AI let us test all three in one week. The catch is that AI easily produces believable but false content, so keeping the data honest became part of the design work.</p>
 
             <div class="callout">
               <strong>If I did it again</strong>
-              <p>I'd run a quick hallway test with people outside the team. We tested functionality thoroughly but never checked whether a first-time visitor could tell that bubbles can merge without the tooltips.</p>
+              <p>I'd run a quick hallway test with people outside the team. We tested every function, but we never checked whether a first-time visitor could figure out, without the tooltips, that bubbles merge.</p>
             </div>
 
             <h4 style="margin-top:40px">Further reading</h4>
@@ -375,11 +381,11 @@
   <footer>
     <div class="wrap">
       <span>© 2026 Prince Patel · CPSC 581, University of Calgary</span>
-      <span>Team: Adrian Aure, Mark Cawili, Prince Patel, Ayushi Patil</span>
+      <span>Team: Adrian Aure, Mark Cawili, Prince Patel, Ayushi Patil · <a href="index.html#ai">How I used AI</a></span>
     </div>
   </footer>
 
-  <script src="js/site.js?v=5"></script>
-  <script src="js/bubbles.js?v=5"></script>
+  <script src="js/site.js?v=6"></script>
+  <script src="js/bubbles.js?v=6"></script>
 </body>
 </html>

@@ -4,6 +4,26 @@
   document.documentElement.classList.add('js');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  // Light/dark toggle. The inline script in <head> picks the starting theme
+  // (saved choice, else the system setting) so the page never flashes.
+  const root = document.documentElement;
+  const toggle = document.querySelector('.theme-toggle');
+  const label = () => toggle && toggle.setAttribute('aria-label', `Switch to ${root.dataset.theme === 'dark' ? 'light' : 'dark'} mode`);
+  label();
+  const setTheme = (t, save) => {
+    const apply = () => { root.dataset.theme = t; label(); };
+    // Cross-fade instead of an abrupt brightness jump.
+    document.startViewTransition && !reduceMotion.matches ? document.startViewTransition(apply) : apply();
+    if (save) try { localStorage.setItem('theme', t); } catch (e) { /* storage blocked: theme just won't persist */ }
+  };
+  toggle && toggle.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true));
+  // Until someone picks a theme, keep following the system setting.
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    let saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (err) { /* ignore */ }
+    if (!saved) setTheme(e.matches ? 'dark' : 'light', false);
+  });
+
   // Nav hairline appears only once content scrolls under the translucent bar.
   const nav = document.querySelector('.nav');
   const onScroll = () => nav && nav.classList.toggle('scrolled', window.scrollY > 4);
