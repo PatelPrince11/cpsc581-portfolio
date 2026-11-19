@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TiltTwin · Prince Patel</title>
+  <meta name="description" content="CPSC 581 Project 2 case study: TiltTwin, where an expert teaches a beginner 3D rotation and the beginner turns their own phone to match. Ten concepts, one pivot, a real-device pilot.">
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121014" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='28' cy='28' r='22' fill='%234c6fe0'/><circle cx='72' cy='28' r='22' fill='%23e39a4e'/><circle cx='28' cy='72' r='22' fill='%238b6fe0'/><circle cx='72' cy='72' r='22' fill='%232fae93'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=7">
+  <script>
+    // Pick the theme before first paint: saved choice, else the system setting.
+    (function () { var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+      document.documentElement.dataset.theme = t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary">
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-label="Prince Patel, home">
+        <svg class="mark" viewBox="0 0 18 18" aria-hidden="true"><circle cx="4.5" cy="4.5" r="4" fill="var(--prince)"/><circle cx="13.5" cy="4.5" r="4" fill="var(--mark)"/><circle cx="4.5" cy="13.5" r="4" fill="var(--ayushi)"/><circle cx="13.5" cy="13.5" r="4" fill="var(--adrian)"/></svg>
+        <span class="name">Prince Patel</span> <span>· CPSC 581</span>
+      </a>
+      <ul>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#philosophy">Philosophy</a></li>
+        <li><a href="index.html#growth">Growth</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="cs-hero">
+      <div class="wrap">
+        <p class="eyebrow"><a href="index.html#work">← All work</a> · Project 2</p>
+        <h1 class="display">Tilt<em>Twin</em></h1>
+        <p class="lead">The brief was to share expertise between two people through physical movement. Our expert teaches a beginner how a 3D part rotates. The beginner doesn't drag a mouse: they hold a phone and turn it, and the part on the screen turns with it.</p>
+
+        <dl class="facts">
+          <div><dt>Team</dt><dd>Kevin, Ayushi Patil, Prince Patel</dd></div>
+          <div><dt>My role</dt><dd>Requirements, the v2 build with Claude (phone tilt, live sync, parts, sound), real-device tests, the pilot study</dd></div>
+          <div><dt>Live app</dt><dd><a href="https://tilttwin.vercel.app" target="_blank" rel="noopener">tilttwin.vercel.app ↗</a> · <a href="https://github.com/Kevin398/CPSC581-TiltTwin" target="_blank" rel="noopener">code ↗</a></dd></div>
+          <div><dt>Timeline</dt><dd>About 2 weeks, October 2026</dd></div>
+          <div><dt>Methods</dt><dd>10-ideas sketching, criteria matrix, storyboard, two wireframe versions, unit tests, real-device tests, pilot study</dd></div>
+          <div><dt>Tools</dt><dd>React, Three.js, Firebase Realtime Database, Vercel, Claude, Playwright</dd></div>
+        </dl>
+
+        <div class="device">
+          <div class="bar">
+            <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="url">tilttwin.vercel.app</span>
+            <a class="open" href="https://tilttwin.vercel.app" target="_blank" rel="noopener">Open full screen ↗</a>
+          </div>
+          <button class="poster" type="button" aria-label="Load the live TiltTwin app">
+            <img src="assets/p2/v2-home.jpg" alt="" loading="lazy">
+            <span class="play">Tap to load the live app</span>
+          </button>
+          <iframe data-src="https://tilttwin.vercel.app" title="TiltTwin: the live Project 2 app"></iframe>
+          <noscript><iframe src="https://tilttwin.vercel.app" title="TiltTwin: the live Project 2 app"></iframe></noscript>
+        </div>
+        <p class="embed-note"><span>This is the real app. Pick a part on the home page to see it fit. The full lesson needs a phone with motion sensors, so open the link on your phone to try it.</span></p>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="cs-layout">
+        <aside class="toc" aria-label="On this page">
+          <ol>
+            <li><a href="#brief">The brief</a></li>
+            <li><a href="#diverge">Diverge</a></li>
+            <li><a href="#converge">Converge</a></li>
+            <li><a href="#refine">Refine</a></li>
+            <li><a href="#specify">Storyboard &amp; wireframes</a></li>
+            <li><a href="#build">Build</a></li>
+            <li><a href="#fit">Make it fit</a></li>
+            <li><a href="#testing">Testing</a></li>
+            <li><a href="#contribution">My contribution</a></li>
+            <li><a href="#reflection">Reflection</a></li>
+          </ol>
+        </aside>
+
+        <article>
+          <!-- ===== BRIEF ===== -->
+          <section class="chapter" id="brief">
+            <p class="eyebrow">01 · The brief</p>
+            <h2>Teach with <em>your hands.</em></h2>
+            <p>One person has a skill and another needs it, and they aren't in the same room. The brief asked us to move that expertise across through embodied input and output, so the body does part of the communicating. A video call or a shared screen couldn't be the core of the idea.</p>
+            <p>We picked 3D rotation in CAD. Beginners in Blender or Fusion struggle with it because the mouse mapping is abstract: which axis is this drag turning, and which way? An expert can't easily say it in words either.</p>
+            <div class="callout">
+              <strong>The setup</strong>
+              <p>One expert on a laptop, one beginner on a phone, remote and live, joined by a 4-letter room code.</p>
+            </div>
+          </section>
+
+          <!-- ===== DIVERGE ===== -->
+          <section class="chapter" id="diverge">
+            <p class="eyebrow">02 · Diverge</p>
+            <h2>Ten ways to <em>move knowledge.</em></h2>
+            <p>Each sketch answers one question: how can an expert's sense of 3D orientation reach a novice through the body instead of through words or a shared screen? We used the in-class ten-ideas method. Kevin drew the sketches and Ayushi and I gave feedback on them.</p>
+            <div class="grid three" style="margin-top:28px">
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p2/01-concept-exploration-p1.jpg" alt="Pencil sketches of concepts 1 to 4: highlight and point, physical 3D rotation of a phone, object tracing, and mirroring hand motion through a webcam." loading="lazy"></button>
+                <figcaption>Concepts 1–4: highlight and point; physical phone rotation; path tracing; mirroring the expert's hands with a webcam.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p2/01-concept-exploration-p2.jpg" alt="Pencil sketches of concepts 5 to 8: rotating a physical proxy object, copying two-finger gestures, rotating until correct, and two people controlling one shared object." loading="lazy"></button>
+                <figcaption>Concepts 5–8: rotate a physical proxy; copy two-finger gestures; rotate until correct; share control of one object.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p2/01-concept-exploration-p3.jpg" alt="Pencil sketches of concepts 9 and 10: inspecting a physical object beside its virtual twin, and an expert recording actions as lessons for the beginner." loading="lazy"></button>
+                <figcaption>Concepts 9–10: a physical object beside its virtual twin; the expert records actions as lessons to follow.</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <!-- ===== CONVERGE ===== -->
+          <section class="chapter" id="converge">
+            <p class="eyebrow">03 · Converge</p>
+            <h2>The pivot <em>from CADSense.</em></h2>
+            <p>Our first direction, CADSense, was a mouse-driven tutor for extrude, rotate and scale. When we checked it against the brief, it looked conventional. A quarter of the grade is for creative embodied input and output, and mouse input is neither.</p>
+            <p>We scored the strongest concepts against five criteria taken straight from the brief.</p>
+
+            <div class="matrix-wrap reveal">
+              <table class="matrix">
+                <thead>
+                  <tr><th scope="col">Concept</th><th scope="col">Input</th><th scope="col">Output</th><th scope="col">CAD skill</th><th scope="col">2 weeks</th><th scope="col">Demo</th><th scope="col">Total</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">CADSense (mouse + arrows)</th><td>1</td><td>2</td><td>3</td><td>2</td><td>3</td><td>11</td></tr>
+                  <tr><th scope="row">#3 Object tracing</th><td>2</td><td>1</td><td>1</td><td>3</td><td>3</td><td>10</td></tr>
+                  <tr><th scope="row">#4 Mirror hand motion</th><td>3</td><td>2</td><td>2</td><td>1</td><td>1</td><td>9</td></tr>
+                  <tr><th scope="row">#5 Rotate a physical proxy</th><td>3</td><td>2</td><td>3</td><td>1</td><td>1</td><td>10</td></tr>
+                  <tr><th scope="row">#8 Shared object</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>10</td></tr>
+                  <tr class="win"><th scope="row">#2 + #7 + #10 → TiltTwin</th><td>3</td><td>3</td><td>3</td><td>2</td><td>2</td><td>13</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="small muted">Columns: embodied input, embodied output, conveys CAD skill, feasible in 2 weeks, reliable live demo. Scores run from 1 (weak) to 3 (strong). They are our own design judgments, not measured results.</p>
+
+            <p>The physical-proxy idea (#5) scored high on embodiment, but it needs tracking hardware or computer vision, and we couldn't make that reliable in two weeks. Then we noticed that a phone already has orientation sensors. The phone itself could be the proxy.</p>
+            <div class="callout">
+              <strong>Decision</strong>
+              <p>Merge #2 (turn something physical), #7 (rotate until it's right) and #10 (the expert sets the lesson) into TiltTwin. We gave up extrude and scale so we could make one interaction, rotation, work well. That also leaves a clean comparison with mouse rotation for later.</p>
+            </div>
+          </section>
+
+          <!-- ===== REFINE ===== -->
+          <section class="chapter" id="refine">
+            <p class="eyebrow">04 · Refine</p>
+            <h2>Keep four ideas, <em>drop one.</em></h2>
+            <p>We sketched five refinements: (1) basic physical rotation, (2) a transparent ghost of the target over the part, (3) axes and direction arrows that rotate with the part, (4) a check mark when the orientation is right, and (5) both people's actions kept in sync. We kept all but number 2.</p>
+            <div class="grid two">
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p2/02-tilttwin-refinements-p1.jpg" alt="Refinement sketches 1 to 3: basic physical rotation, a transparent ghost of the target over the part, and axis arrows that rotate with the object." loading="lazy"></button>
+                <figcaption>Refinements 1–3: physical rotation, the transparent ghost, axes and arrows.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p2/02-tilttwin-refinements-p2.jpg" alt="Refinement sketches 4 and 5: a check mark on reaching the right orientation, and synchronising the expert's and beginner's actions." loading="lazy"></button>
+                <figcaption>Refinements 4–5: the check mark, and keeping both people in sync.</figcaption>
+              </figure>
+            </div>
+            <h3 style="margin-top:36px">Why the ghost went</h3>
+            <p>On a phone-sized screen, two overlapping see-through L-brackets are hard to read. You can't tell which edges belong to which part, and near the target the two shapes blur into one. It also invites matching shapes by eye, when we wanted the beginner to learn which axis and which direction. We replaced it with three cues, one per question:</p>
+            <div class="spec">
+              <div class="k">Where should it end up?</div><div class="v">→ A small window with the <strong>expert's demonstration</strong>, looping from 0° to the target.</div>
+              <div class="k">Which way do I turn?</div><div class="v">→ A coloured <strong>arc arrow</strong> around the lesson's axis, from the current angle to the target.</div>
+              <div class="k">How far am I?</div><div class="v">→ A large <strong>live gauge</strong> ("22° of 45°") and colour: orange when far, yellow when close, green when matched.</div>
+            </div>
+          </section>
+
+          <!-- ===== SPECIFY ===== -->
+          <section class="chapter" id="specify">
+            <p class="eyebrow">05 · Storyboard &amp; wireframes</p>
+            <h2>Drawing the <em>whole exchange.</em></h2>
+            <p>The storyboard follows one lesson: the expert sends an instruction, the beginner calibrates, turns the phone, and both screens show a check mark. Then two rounds of wireframes pinned down what each person sees.</p>
+            <div class="grid two">
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p2/03-interaction-storyboard-p1.jpg" alt="Storyboard frames 1 to 4: the expert sends an instruction, the beginner calibrates, then rotates the phone and the part follows." loading="lazy"></button>
+                <figcaption>Storyboard 1–4: send, calibrate, rotate, the part follows.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p2/03-interaction-storyboard-p2.jpg" alt="Storyboard frame 5: both screens show the completion check mark once the beginner matches." loading="lazy"></button>
+                <figcaption>Storyboard 5: both screens confirm the match.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p2/04-expert-beginner-wireframes-v1-p1.jpg" alt="Wireframes v1: the expert has a show progress button, start and end, send instruction and a completion check; the beginner sees a dashed target with 45 degree labels and a compass." loading="lazy"></button>
+                <figcaption>Wireframes v1: a vague "show progress" button for the expert.</figcaption>
+              </figure>
+              <figure class="reveal">
+                <button class="fig contain" type="button"><img src="assets/p2/05-expert-beginner-wireframes-v2-p1.jpg" alt="Wireframes v2: the expert sees the beginner's live angle, 30 of 45 degrees, on the model; the beginner calibrates at startup and physically rotates the phone." loading="lazy"></button>
+                <figcaption>Wireframes v2: a live angle on the model, "30° / 45°", visible to both people.</figcaption>
+              </figure>
+            </div>
+            <p>The change between v1 and v2 mattered most. A live "30° / 45°" gives the expert something exact to correct ("15° more") and gives the beginner an exact goal. v2 also makes turning the phone the input, in place of on-screen controls.</p>
+          </section>
+
+          <!-- ===== BUILD ===== -->
+          <section class="chapter" id="build">
+            <p class="eyebrow">06 · Build</p>
+            <h2>Baseline first, <em>then the real thing.</em></h2>
+            <p>Kevin built v1, a mouse-drag baseline with an 8-way arrow pad, in a single browser tab. It taught us three things we turned into requirements for v2: free two-axis rotation is hard to put into words, feedback should be continuous instead of waiting for a "Check Angle" button, and the two roles need to be on two real devices.</p>
+            <figure class="reveal" style="max-width:640px;margin:24px 0">
+              <button class="fig" type="button"><img src="assets/p2/v1-expert-baseline.jpg" alt="The v1 expert workspace: a 3D part with free two-axis rotation by mouse drag or an arrow pad, and a Save Angle button." loading="lazy"></button>
+              <figcaption>v1: free rotation by mouse. Hard to instruct, and no feedback until you press a button.</figcaption>
+            </figure>
+
+            <p>I wrote the v2 requirements and built it with Claude: phone tilt with calibration, live sync over Firebase, and the Vercel deploy. These were the decisions that shaped it:</p>
+            <div class="grid two" style="margin-top:20px">
+              <div class="card reveal"><h4>The phone is the part</h4><p class="muted small">Turning the phone turns the model the same way. The hand learns the rotation as well as the eye. We considered on-screen arrows (that was v1) and full three-axis matching, which is too hard to judge against one target.</p></div>
+              <div class="card reveal"><h4>One axis per lesson</h4><p class="muted small">Hands wobble. We measure only the turn around the lesson's axis (a swing-twist split of the phone's rotation), so the sideways wobble doesn't make the feedback jitter. Euler angles would have hit gimbal lock when the phone is upright.</p></div>
+              <div class="card reveal"><h4>Calibration</h4><p class="muted small">The pose you're holding when a lesson arrives becomes 0°. Everyone holds a phone differently, and the compass drifts indoors, so a relative zero beats "hold it exactly like this".</p></div>
+              <div class="card reveal"><h4>Hints in body terms</h4><p class="muted small">"Tilt the top toward you", not "X+". That turns CAD axis language into something a hand can do. (Testing later showed this is harder than it sounds. See the Y-axis hint below.)</p></div>
+              <div class="card reveal"><h4>Four feedback channels</h4><p class="muted small">Colour, number, arrow, and sound with vibration. A beginner's eyes are on the part, so redundant cues help, and a buzz confirms success without looking.</p></div>
+              <div class="card reveal"><h4>A drag fallback, on purpose</h4><p class="muted small">Phones and laptops without motion sensors can still do the lessons by dragging. It also gave us the mouse condition for a later comparison.</p></div>
+            </div>
+            <p style="margin-top:24px">Rooms use a 4-letter code in Firebase Realtime Database, which syncs in under a second with no server of our own. The codes skip look-alike characters (no 0/O or 1/I). We rejected WebRTC because it fails behind some networks, which was too risky for a live demo. A match counts when the part stays within 8° of the target for 0.8 seconds, so passing through the target doesn't count as finishing.</p>
+
+            <div class="shots">
+              <figure class="wide reveal">
+                <button class="fig" type="button"><img src="assets/p2/v2-beginner-turning.jpg" alt="Beginner view mid-rotation: instruction 'Line the hole up with the bolt', 'Swing the right edge of the phone away from you', a yellow angle gauge reading 22 degrees of 45, and the expert's looping demo in the corner." loading="lazy"></button>
+                <figcaption>The beginner's view mid-turn. The hint, the arc arrow and the 22° of 45° gauge are all yellow because the part is close. The expert's demo loops bottom right.</figcaption>
+              </figure>
+              <figure class="wide reveal">
+                <button class="fig" type="button"><img src="assets/p2/v2-beginner-matched.jpg" alt="Beginner view after a match: the part, frame and gauge turn green and a confirmation appears." loading="lazy"></button>
+                <figcaption>After 0.8 s on target, the part, frame and gauge turn green. A chime plays and the phone buzzes where it can.</figcaption>
+              </figure>
+              <figure class="wide reveal">
+                <button class="fig" type="button"><img src="assets/p2/v2-beginner-message.jpg" alt="Beginner view with a toast from the expert reading Other way, during a minus 90 degree lesson on the X axis." loading="lazy"></button>
+                <figcaption>The expert's one-tap correction ("Other way!") arrives as a message on the phone.</figcaption>
+              </figure>
+              <figure class="wide reveal">
+                <button class="fig" type="button"><img src="assets/p2/v2-expert-matched.jpg" alt="Expert view: controls on the left to choose an axis, angle and part and send; on the right a live mirror of the beginner's part, quick correction buttons, and a session log of completed lessons with times." loading="lazy"></button>
+                <figcaption>The expert's view. Left: pick the part, axis and angle, preview the demo and send. Right: a live mirror of the beginner's part, quick corrections and a free-text tip. Below: a log of each lesson's completion time.</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <!-- ===== FIT ===== -->
+          <section class="chapter" id="fit">
+            <p class="eyebrow">07 · Make it fit</p>
+            <h2>From matching an angle <em>to making a part fit.</em></h2>
+            <p>With rotation working, we asked what would make it more useful for real CAD work without weakening the embodied part. We weighed four additions:</p>
+            <div class="matrix-wrap reveal">
+              <table class="matrix">
+                <thead><tr><th scope="col">Idea</th><th scope="col">Why</th><th scope="col">Cost or risk</th><th scope="col">Decision</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Part library</th><td>Practise on parts you'd actually model</td><td>Low</td><td><span class="chip yes dot">Built</span></td></tr>
+                  <tr class="win"><th scope="row">Assembly "fit" task</th><td>Gives the angle a purpose: you orient a part so it mates with another</td><td>Medium</td><td><span class="chip yes dot">Built</span></td></tr>
+                  <tr><th scope="row">Hot/cold vibration</th><td>Feel the answer without looking</td><td>iPhone Safari has no vibration API</td><td><span class="chip yes dot">Built, with sound as the fallback</span></td></tr>
+                  <tr><th scope="row">Stars and streaks</th><td>Fun and motivating</td><td>Low, but little link to sharing expertise</td><td><span class="chip part dot">Deferred</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="grid two" style="margin-top:28px">
+              <figure class="reveal"><button class="fig" type="button"><img src="assets/p2/v3-part-bracket.jpg" alt="L-bracket with its hole lining up over a bolt." loading="lazy"></button><figcaption>L-bracket: hole onto the bolt (X axis).</figcaption></figure>
+              <figure class="reveal"><button class="fig" type="button"><img src="assets/p2/v3-part-elbow.jpg" alt="Pipe elbow connecting its outlet to a pipe." loading="lazy"></button><figcaption>Pipe elbow: outlet to the pipe (Y axis).</figcaption></figure>
+              <figure class="reveal"><button class="fig" type="button"><img src="assets/p2/v3-part-gear.jpg" alt="Gear with its pin hole sliding onto a pin." loading="lazy"></button><figcaption>Gear: pin hole onto the pin (Z axis).</figcaption></figure>
+              <figure class="reveal"><button class="fig" type="button"><img src="assets/p2/v3-part-wrench.jpg" alt="Wrench with its jaws fitting onto a nut." loading="lazy"></button><figcaption>Wrench: jaws onto the nut (−90° about Y).</figcaption></figure>
+            </div>
+            <p>Each part has a hole, an outlet or jaws, and a solid mating part sits where that feature will be at the target. That keeps the earlier decision to drop the transparent overlay, and it turns an abstract angle into a physical goal. The success moment becomes "it clicks into place". A unit test checks that no feature sits on an axis line, because rotating about that axis would never visibly move it.</p>
+            <p><strong>Hot/cold.</strong> While a lesson is active the phone ticks. The ticks speed up (from about 1 to 9 a second) and rise in pitch as the part gets closer, and stop when it fits. Android also vibrates on each tick. iPhone Safari can't vibrate, so we use the light haptic iOS 18 and later gives when a native switch control is toggled. That behaviour is undocumented, so sound is the dependable channel.</p>
+          </section>
+
+          <!-- ===== TESTING ===== -->
+          <section class="chapter" id="testing">
+            <p class="eyebrow">08 · Testing</p>
+            <h2>What a real hand <em>found.</em></h2>
+            <p>I tested in three layers: unit tests on the sensor maths, a real iPhone, then a small pilot with three people.</p>
+
+            <h3>Unit tests, then a real phone</h3>
+            <p>Seven tests check the sensor sign on all three axes, with the phone held in portrait and in both landscape directions. They all passed. Then on October 20 I ran the deployed app with an iPhone as the beginner, and the Y-axis lesson failed.</p>
+            <ol class="prompts">
+              <li><div><p class="said">Observed</p><p class="did">The X and Z lessons went as planned (8.1 s and 4.2 s in the session log). On Y, I moved the phone the opposite way from the one the hint meant.</p></div></li>
+              <li><div><p class="said">Diagnosed</p><p class="did">I suspected the maths first. I simulated each hold, made each hint's motion and checked the sign. It was right in all three. The wording was the problem: "turn the phone to the left" can mean the phone turns left, or the screen turns to face left. The X and Z hints can only be read one way, which is why only Y failed.</p></div></li>
+              <li><div><p class="said">Changed</p><p class="did">The hint now names a physical edge: "Swing the right edge of the phone away from you" (and "toward you" for negative angles).</p></div></li>
+              <li><div><p class="said">Re-tested</p><p class="did">Same iPhone, same day. X, Y and Z all moved the expected way. A second session that day checked all four parts and the hot/cold sound.</p></div></li>
+            </ol>
+            <div class="callout">
+              <strong>The lesson</strong>
+              <p>Describe an embodied motion by a landmark on the device, not by a direction word whose meaning depends on how you're looking at it.</p>
+            </div>
+            <p>On October 21, Kevin tested an iPad as the expert and a phone as the beginner, both in Safari. The two connected, the part moved the expected way and messages crossed. This shows the interaction works on the devices we tried. It doesn't show it works on every phone.</p>
+
+            <h3 style="margin-top:44px">Pilot study (n = 3)</h3>
+            <p>Three participants each joined their own session on their phone and did three rotation tasks by turning it. A team member played the expert. Tasks covered all four parts, all three axes, and 45° and 90° turns in both directions. The expert's session log records time automatically, from the moment the instruction arrives to the first time the part is held on target.</p>
+            <div class="matrix-wrap reveal">
+              <table class="matrix">
+                <thead><tr><th scope="col"></th><th scope="col">Task 1</th><th scope="col">Task 2</th><th scope="col">Task 3</th><th scope="col">Mean</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">P1</th><td>Elbow, Y +45°: 6.5 s</td><td>Gear, Y +45°: 1.8 s</td><td>Wrench, Z −45°: 4.0 s</td><td>4.1 s</td></tr>
+                  <tr><th scope="row">P2</th><td>Bracket, X +90°: 5.1 s</td><td>Gear, X +90°: 2.7 s</td><td>Gear, Z +90°: 4.0 s</td><td>3.9 s</td></tr>
+                  <tr><th scope="row">P3</th><td>Bracket, Y −90°: 3.1 s</td><td>Bracket, Z −90°: 3.7 s</td><td>Elbow, Z −90°: 3.4 s</td><td>3.4 s</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="small muted">All 9 tasks completed. Mean 3.8 s (SD 1.4), median 3.7 s, range 1.8–6.5 s.</p>
+            <div class="grid three">
+              <figure class="reveal"><button class="fig" type="button"><img src="assets/p2/pilot-p1.jpg" alt="Expert-screen session log for participant 1." loading="lazy"></button><figcaption>P1's session log</figcaption></figure>
+              <figure class="reveal"><button class="fig" type="button"><img src="assets/p2/pilot-p2.jpg" alt="Expert-screen session log for participant 2." loading="lazy"></button><figcaption>P2's session log</figcaption></figure>
+              <figure class="reveal"><button class="fig" type="button"><img src="assets/p2/pilot-p3.jpg" alt="Expert-screen session log for participant 3." loading="lazy"></button><figcaption>P3's session log</figcaption></figure>
+            </div>
+            <p>Everyone finished every task. That includes the Y lessons that had failed before the rewording. Mean times were close across axes (X 3.9 s, Y 3.8 s, Z 3.8 s), so no axis stood out as harder. P1 and P2 were slowest on their first task (6.5 s and 5.1 s) and averaged 3.1 s afterward. That might be a warm-up effect, but with three people we can't separate it from task difficulty.</p>
+
+            <h3>The part kept moving after "Fits!"</h3>
+            <p>In all three sessions the expert's live readout had drifted far from the target after the success message: −119° on a −45° task, −23° on a +90° task, −37° on a −90° task. The likely cause is that people relaxed or lowered the phone once they felt done, and the expert's mirror kept following. To the expert, that looks like an error sitting next to a check mark.</p>
+            <div class="callout">
+              <strong>Change after the pilot</strong>
+              <p>Once the part fits, it stays snapped to the target on both screens until the next instruction arrives. I checked it by fitting a part, then turning the phone 150° away. Both screens held at the target, and the next instruction released the part back to live tracking.</p>
+            </div>
+
+            <h4 style="margin-top:32px">What this doesn't show</h4>
+            <p>Three people, no mouse condition, and I didn't record wrong-direction starts or ratings. It shows beginners can complete the tasks in about 4 seconds on every axis. It doesn't show that tilt is faster, easier or better for learning than a mouse. We designed a within-subjects comparison to test that (drag against tilt, counterbalanced order, measuring time, wrong-direction starts, corrections and a 1–5 understanding rating), but we haven't run it.</p>
+          </section>
+
+          <!-- ===== CONTRIBUTION ===== -->
+          <section class="chapter" id="contribution">
+            <p class="eyebrow">09 · My contribution</p>
+            <h2>What <em>I</em> did.</h2>
+            <p>I set the requirements for v2 and led its build with Claude on the <code>feature/tilttwin-complete</code> branch. That covered phone tilt with calibration, live expert and beginner sync over Firebase, the Vercel deploy, the parts library and its four fit tasks, hot/cold sound and haptics, a fixed join link with checked codes, and the UI/UX redesign. I also did the repo cleanup and merged the pull requests.</p>
+            <p>I ran the testing. I did the first real-iPhone test on October 20, found that the Y-axis hint was being read backwards, diagnosed it as wording and not maths, and checked my fix on the same phone that day. I ran the three-person pilot, then made the snap-on-target change the pilot pointed to.</p>
+            <p>In the write-up I wrote the real-device and pilot sections, restyled the PDF and wrote the future-work paragraph. Claude wrote much of the code under my direction. I chose what to build, what to change after each test, and what the evidence could and couldn't support.</p>
+            <div class="grid three" style="margin-top:28px">
+              <div class="card reveal"><h4>Kevin</h4><p class="muted small">Sketches, storyboard, wireframes and the v1 baseline. He also regenerated the final PDF and tested on an iPad.</p></div>
+              <div class="card reveal"><h4>Ayushi</h4><p class="muted small">Per our report, implementation of assigned GitHub issues, and the demo video.</p></div>
+              <div class="card reveal"><h4>Me</h4><p class="muted small">The v2 build, the real-device tests, the pilot and the changes that came out of them.</p></div>
+            </div>
+          </section>
+
+          <!-- ===== REFLECTION ===== -->
+          <section class="chapter" id="reflection">
+            <p class="eyebrow">10 · Reflection</p>
+            <h2>What I'm <em>taking forward.</em></h2>
+
+            <h3>Test with the real device, early.</h3>
+            <p>The Y hint passed every unit test and still failed in my hand. Software that reads sensors can be right while the instruction is wrong. I'd put the real phone in a real hand on day one, not after the build.</p>
+
+            <h3>Words are part of the interface.</h3>
+            <p>"Turn left" means two things depending on whether you watch the phone or the screen. Naming an edge of the device fixed it. I now treat instruction text as something to test, not something to write once.</p>
+
+            <h3>Watch what people do after they succeed.</h3>
+            <p>Nobody had mentioned the drift after "Fits!" in our walkthroughs. It only showed up with real participants, and it led to a real fix.</p>
+
+            <h3>Say what the evidence doesn't show.</h3>
+            <p>Three people finishing in about 4 seconds proves tilt works. It doesn't prove it beats a mouse, and the report says so.</p>
+
+            <div class="callout">
+              <strong>If I did it again, and what's missing</strong>
+              <p>I'd run the drag-versus-tilt comparison and record wrong-direction starts and ratings in the pilot. The biggest gap against the brief is that only the beginner is embodied. The expert still picks a part, axis and angle on screen, and the demo they send is an animation, not their own movement. Next I'd let the expert open TiltTwin on their own phone and demonstrate by turning it. The same orientation code would capture it, so the beginner sees a real motion replayed.</p>
+            </div>
+
+            <h4 style="margin-top:40px">Sources I used beyond lecture</h4>
+            <ul class="refs">
+              <li>W3C. <em>DeviceOrientation Event Specification.</em> The alpha, beta and gamma angles and their rotation order. I checked the unit-test signs against it.</li>
+              <li>three.js <em>DeviceOrientationControls.</em> The maths for turning sensor angles into a quaternion. Our <code>deviceQuaternion</code> function follows it.</li>
+              <li>Dobrowolski, P. (2015). <em>Swing-twist decomposition in Clifford algebra.</em> arXiv:1506.05481. The standard technique for isolating the turn around one axis.</li>
+              <li>WebKit's <code>&lt;input type="checkbox" switch&gt;</code> (Safari 17.4+), the technique behind the iOS haptic workaround. It's undocumented behaviour, so I treat it as a technique, not a reference.</li>
+              <li>Google. <em>Firebase Realtime Database documentation.</em></li>
+              <li>Anthropic. (2026). <em>Claude</em> [AI assistant], used for implementation under my direction.</li>
+            </ul>
+
+            <nav class="pager" aria-label="Project navigation">
+              <a href="project-1.html">← Project 1: A Family of Buttons</a>
+              <span class="muted">Project 3: coming soon</span>
+            </nav>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
+
+<footer>
+    <div class="wrap">
+      <span>© 2026 Prince Patel · CPSC 581, University of Calgary</span>
+      <span>Team: Kevin, Ayushi Patil, Prince Patel · <a href="index.html#ai">How I used AI</a></span>
+    </div>
+  </footer>
+
+  <script src="js/site.js?v=7"></script>
+  <script src="js/bubbles.js?v=7"></script>
+</body>
+</html>

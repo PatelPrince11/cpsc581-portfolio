@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
   <script>
     // Pick the theme before first paint: saved choice, else the system setting.
     (function () { var t; try { t = localStorage.getItem('theme'); } catch (e) {}
@@ -45,12 +45,13 @@
     <header class="hero">
       <div class="wrap">
         <div class="hero-copy">
-        <p class="status"><i aria-hidden="true"></i>CPSC 581 · Fall 2026 · Check-in 1</p>
+        <p class="status"><i aria-hidden="true"></i>CPSC 581 · Fall 2026 · Check-in 2</p>
         <h1 class="name">Prince <em>Patel</em></h1>
         <p class="tagline">I design for the <em class="grad">space between</em> things.</p>
         <p class="lead">This site collects my work for CPSC 581, Human-Computer Interaction: the sketches, the ideas we dropped, the decisions and the prototypes behind each project. It also tracks how my thinking changes over the semester.</p>
         <div class="hero-actions">
-          <a class="btn" href="project-1.html">Read Project 1 →</a>
+          <a class="btn" href="project-2.html">Read Project 2 →</a>
+          <a class="btn ghost" href="project-1.html">Project 1</a>
           <a class="btn ghost" href="#philosophy">My design philosophy</a>
         </div>
         </div>
@@ -90,21 +91,29 @@
             </div>
           </a>
 
-          <div class="grid two">
-            <div class="card project soon reveal">
-              <div class="info">
-                <p class="eyebrow">Project 2</p>
-                <h3 class="h3"><span class="ital">In progress</span></h3>
-                <p class="muted small" style="margin:0">This case study goes up after Project 2 wraps. Check-in 2 is due November 19.</p>
+          <a class="card project p2 reveal" href="project-2.html">
+            <div class="info">
+              <p class="eyebrow">Project 2 · Group of 3</p>
+              <h3 class="h2">TiltTwin</h3>
+              <div class="meta">
+                <span class="chip">Embodied interaction</span><span class="chip">Real-device testing</span><span class="chip">Pilot study</span>
               </div>
+              <p class="muted">An expert teaches a beginner how a 3D part rotates, and the beginner turns their own phone to match. We sketched ten concepts, dropped our first idea for a more physical one, and found a wording bug on a real iPhone that no unit test caught.</p>
+              <span class="go">Read the case study →</span>
             </div>
-            <div class="card project soon reveal">
-              <div class="info">
-                <p class="eyebrow">Project 3</p>
-                <h3 class="h3"><span class="ital">Upcoming</span></h3>
-                <p class="muted small" style="margin:0">This case study goes up before the final submission on December 4.</p>
-              </div>
+            <div class="art" aria-hidden="true">
+              <img src="assets/p2/v2-beginner-turning.jpg" alt="" loading="lazy">
+              <span class="num">02</span>
             </div>
+          </a>
+
+          <div class="card project soon reveal">
+            <div class="info">
+              <p class="eyebrow">Project 3</p>
+              <h3 class="h3"><span class="ital">Upcoming</span></h3>
+              <p class="muted small" style="margin:0">This case study goes up before the final submission on December 4.</p>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -114,9 +123,10 @@
     <section id="philosophy" class="alt">
       <div class="wrap">
         <div class="section-head reveal">
-          <p class="eyebrow"><span class="idx">02</span><span class="rule"></span>Design philosophy · v1, October 2026</p>
+          <p class="eyebrow"><span class="idx">02</span><span class="rule"></span>Design philosophy · v2, November 2026</p>
           <h2>What I believe about design, <em>so far.</em></h2>
-          <p class="lead">Each principle came from a real decision in a project and links back to it. I'll revise the list after every project and record the changes in the <a href="#growth">growth log</a>.</p>
+          <p class="lead">Each principle came from a real decision in a project and links back to it. I revise the list after every project and record the changes in the <a href="#growth">growth log</a>.</p>
+          <p class="version-note">v2 keeps all five v1 principles, widens 01 and 03, adds an example to 05 and adds two new ones from testing TiltTwin on real phones.</p>
         </div>
 
         <ol class="principles">
@@ -125,10 +135,10 @@
               <circle cx="14" cy="32" r="10" fill="var(--prince)"/><circle cx="50" cy="32" r="10" fill="var(--mark)"/>
               <line x1="27" y1="32" x2="37" y2="32" stroke="var(--text)" stroke-width="1.5" stroke-dasharray="1 4" stroke-linecap="round"/>
             </svg>
-            <h3><span class="n">01</span>Design how the parts relate.</h3>
+            <h3><span class="n">01</span>Design how the parts relate. That includes the people.</h3>
             <div>
-              <p>Four of our five Project 1 concepts put the four of us side by side, and none of them could show how we related, which was what the brief asked for. Now I look at how the elements of an interface act on each other before I polish any one of them.</p>
-              <p class="from">From <a href="project-1.html#pattern">Project 1 · The pattern</a></p>
+              <p>Four of our five Project 1 concepts put the four of us side by side, and none of them could show how we related, which was what the brief asked for. Now I look at how the elements of an interface act on each other before I polish any one of them. TiltTwin pushed this further: it's two people on two devices, and the expert's live view of the beginner mattered as much as the beginner's own screen.</p>
+              <p class="from">From <a href="project-1.html#pattern">Project 1 · The pattern</a> and <a href="project-2.html#specify">Project 2 · Wireframes</a></p>
             </div>
           </li>
           <li class="reveal">
@@ -138,8 +148,8 @@
             </svg>
             <h3><span class="n">02</span>Go wide while ideas are cheap.</h3>
             <div>
-              <p>Five concepts on paper cost us an evening. Building the wrong one would have cost us the week. Having several ideas side by side also let us compare them, and that's how we spotted the flaw they all shared.</p>
-              <p class="from">From <a href="project-1.html#diverge">Project 1 · Diverge</a></p>
+              <p>Five concepts on paper cost us an evening. Building the wrong one would have cost us the week. Having several ideas side by side also let us compare them, and that's how we spotted the flaw they all shared. In Project 2, ten sketches let us drop our first idea before we built any of it.</p>
+              <p class="from">From <a href="project-1.html#diverge">Project 1 · Diverge</a> and <a href="project-2.html#converge">Project 2 · Converge</a></p>
             </div>
           </li>
           <li class="reveal">
@@ -147,10 +157,10 @@
               <circle cx="32" cy="32" r="24" fill="none" stroke="var(--line)" stroke-width="6"/>
               <circle cx="32" cy="32" r="24" fill="none" stroke="var(--ayushi)" stroke-width="6" stroke-linecap="round" stroke-dasharray="55.8 150.8" transform="rotate(-90 32 32)"/>
             </svg>
-            <h3><span class="n">03</span>Be honest with the data, even when it's boring.</h3>
+            <h3><span class="n">03</span>Be honest with the data and the evidence, even when it's boring.</h3>
             <div>
-              <p>If two people share no hobby, the interface says so. If the personality match is 37%, it shows 37%. Once people catch an interface inventing connections, they stop trusting the rest of it.</p>
-              <p class="from">From <a href="project-1.html#honesty">Project 1 · Data honesty</a></p>
+              <p>If two people share no hobby, the interface says so. If the personality match is 37%, it shows 37%. Once people catch an interface inventing connections, they stop trusting the rest of it. The same goes for my own results: three people finishing a task in about 4 seconds shows that it works, not that it beats a mouse, so that's all I claim.</p>
+              <p class="from">From <a href="project-1.html#honesty">Project 1 · Data honesty</a> and <a href="project-2.html#testing">Project 2 · Testing</a></p>
             </div>
           </li>
           <li class="reveal">
@@ -160,8 +170,8 @@
             </svg>
             <h3><span class="n">04</span>Constraints are design material.</h3>
             <div>
-              <p>We had one week, four schedules and nobody who could animate. The puzzle and mountain concepts looked great on paper, but we couldn't have built them in time, so we dropped them. I count what can actually be built as part of the design.</p>
-              <p class="from">From <a href="project-1.html#converge">Project 1 · Converge</a></p>
+              <p>We had one week, four schedules and nobody who could animate. The puzzle and mountain concepts looked great on paper, but we couldn't have built them in time, so we dropped them. I count what can actually be built as part of the design. In Project 2, limiting each lesson to one axis made the hard part buildable in a week.</p>
+              <p class="from">From <a href="project-1.html#converge">Project 1 · Converge</a> and <a href="project-2.html#build">Project 2 · Build</a></p>
             </div>
           </li>
           <li class="reveal">
@@ -172,8 +182,33 @@
             </svg>
             <h3><span class="n">05</span>Build accessibility in from the start.</h3>
             <div>
-              <p>A drag-and-drop toy still has to work with a keyboard, on a phone and for people who turn off animation. I list those as requirements next to the features, before anything gets built.</p>
-              <p class="from">From <a href="project-1.html#build">Project 1 · Build</a></p>
+              <p>A drag-and-drop toy still has to work with a keyboard, on a phone and for people who turn off animation. I list those as requirements next to the features, before anything gets built. TiltTwin has a drag fallback for phones without motion sensors, 44 px tap targets, and sound, vibration and colour together, so no single sense carries the feedback.</p>
+              <p class="from">From <a href="project-1.html#build">Project 1 · Build</a> and <a href="project-2.html#build">Project 2 · Build</a></p>
+            </div>
+          </li>
+          <li class="reveal">
+            <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="20" y="6" width="24" height="52" rx="5" fill="none" stroke="var(--text)" stroke-width="1.5" transform="rotate(-24 32 32)"/>
+              <path d="M10 44a26 26 0 0 0 10 10" fill="none" stroke="var(--mark)" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="32" cy="32" r="4" fill="var(--mark)"/>
+            </svg>
+            <h3><span class="n">06</span>Words are interface. Test them in a real hand.</h3>
+            <div>
+              <p>Our Y-axis hint passed every unit test and still failed on a real iPhone. "Turn left" means two things depending on whether you watch the phone or the screen. Naming a physical edge of the device fixed it. Now I describe a motion by a landmark, not a direction word, and I test the wording with a person.</p>
+              <p class="from">New in v2, from <a href="project-2.html#testing">Project 2 · Testing</a></p>
+            </div>
+          </li>
+          <li class="reveal">
+            <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="32" cy="32" r="24" fill="none" stroke="var(--line)" stroke-width="2"/>
+              <circle cx="32" cy="32" r="9" fill="var(--adrian)"/>
+              <path d="M32 32L52 14" stroke="var(--adrian)" stroke-width="2" stroke-dasharray="1 5" stroke-linecap="round"/>
+              <circle cx="52" cy="14" r="4" fill="none" stroke="var(--adrian)" stroke-width="1.5"/>
+            </svg>
+            <h3><span class="n">07</span>Watch what people do after they succeed.</h3>
+            <div>
+              <p>After the "Fits!" message, all three pilot participants relaxed their hands, and the expert's view drifted away from the target. We never saw that in walkthroughs. Success isn't the end of the interaction, so I now watch what happens next. This one led to the snap-on-target fix.</p>
+              <p class="from">New in v2, from <a href="project-2.html#testing">Project 2 · Testing</a></p>
             </div>
           </li>
         </ol>
@@ -200,15 +235,20 @@
             <h4>Portfolio v1 and design philosophy v1</h4>
             <p>Built this site and wrote five starting principles, each tied to a decision in Project 1.</p>
           </li>
-          <li class="next">
+          <li class="done">
             <time datetime="2026-10-15">Oct 15, 2026</time>
             <h4>Check-in 1</h4>
             <p>Portfolio with Project 1 and my own contributions to it.</p>
           </li>
-          <li>
+          <li class="done">
+            <time datetime="2026-11">November 2026</time>
+            <h4>Project 2: TiltTwin</h4>
+            <p>The biggest change was when I test. Our Y-axis hint passed every unit test and still failed the first time I held a real phone. The maths was right and the words were wrong. The pilot did the same to us: people relaxed their hands after "Fits!", which we never saw in walkthroughs. Now I put the real device in a real hand as early as I can, and I treat instructions as part of the interface. I also learned to say what my evidence doesn't show. Three people finishing in about 4 seconds proves tilt works, not that it beats a mouse.</p>
+          </li>
+          <li class="done">
             <time datetime="2026-11-19">Nov 19, 2026</time>
-            <h4>Check-in 2</h4>
-            <p>Add the Project 2 case study and revise the principles to v2.</p>
+            <h4>Check-in 2 and design philosophy v2</h4>
+            <p>Added the Project 2 case study. The principles are now v2: two widened, one extended with an example and two new ones from testing.</p>
           </li>
           <li>
             <time datetime="2026-12-04">Dec 4, 2026</time>
@@ -239,15 +279,16 @@
         <div class="ai-use reveal">
           <div class="card">
             <h3>What Claude did</h3>
-            <p class="muted">It wrote and revised the HTML, CSS and JavaScript, drafted first versions of the text from our Project 1 report, pulled the figures out of the report and took the screenshots of the live app. I reviewed and edited what it produced, and checked it against the original report and app before publishing.</p>
-            <p class="muted small">The Project 1 app was also built with Claude Code (Claude Sonnet 5.5). The <a href="project-1.html#build">case study</a> covers how.</p>
+            <p class="muted">It wrote and revised the HTML, CSS and JavaScript, drafted first versions of the text from our Project 1 and Project 2 reports, pulled the figures out of the reports and took the screenshots of the live Project 1 app. I reviewed and edited what it produced, and checked it against the original report and app before publishing.</p>
+            <p class="muted small">The Project 1 app was also built with Claude Code (Claude Sonnet 5.5), and TiltTwin was built with help from Claude. The case studies cover how: <a href="project-1.html#build">Project 1</a>, <a href="project-2.html#contribution">Project 2</a>.</p>
           </div>
           <div class="card">
             <h3>Made by people</h3>
             <ul>
-              <li>All concept sketches and storyboards, drawn by our team.</li>
+              <li>All concept sketches, storyboards and wireframes, drawn by our teams.</li>
               <li>The core concept, the design direction and the main project decisions.</li>
-              <li>The hobby lists and ITP personality results the app uses.</li>
+              <li>The hobby lists and ITP personality results the Project 1 app uses.</li>
+            <li>For TiltTwin: the requirements, the real-device tests, the pilot study and which changes to make.</li>
               <li>Choosing and reviewing the content, and the final calls on how the project is presented.</li>
             </ul>
           </div>
@@ -262,7 +303,7 @@
           <circle cx="10" cy="20" r="10" fill="var(--prince)"/><circle cx="110" cy="20" r="10" fill="var(--mark)"/><circle cx="210" cy="20" r="10" fill="var(--ayushi)"/><circle cx="310" cy="20" r="10" fill="var(--adrian)"/>
         </svg>
         <p class="big">Thanks for reading. <em>More soon.</em></p>
-        <p class="muted">Project 2 goes up here after Check-in 2 on November 19.</p>
+        <p class="muted">Project 3 goes up here before the final submission on December 4.</p>
       </div>
     </div>
   </main>
@@ -274,7 +315,7 @@
     </div>
   </footer>
 
-  <script src="js/site.js?v=6"></script>
-  <script src="js/bubbles.js?v=6"></script>
+  <script src="js/site.js?v=7"></script>
+  <script src="js/bubbles.js?v=7"></script>
 </body>
 </html>

@@ -697,3 +697,12 @@ a:not(.btn):not(.project):not(.brand):active { opacity: 0.6; }
   .js .reveal { opacity: 1; transform: none; }
   section { padding: 24px 0; }
 }
+
+/* ---- Project 2 additions ---- */
+.version-note { margin-top: 14px; padding-left: 14px; border-left: 3px solid var(--mark); color: var(--text-2); font-size: 0.9375rem; max-width: 620px; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.88em; background: color-mix(in srgb, var(--text) 8%, transparent); padding: 0.1em 0.35em; border-radius: 5px; }
+.project.p2 .art { background: #0d1220; }
+.project.p2 .art img { object-position: 62% 78%; }
+.project.p2 .art .num { color: rgba(255,255,255,.28); }
+.matrix td { font-variant-numeric: tabular-nums; }
+.grid + p, .shots + p { margin-top: 24px; }
