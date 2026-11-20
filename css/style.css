@@ -706,3 +706,4 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0
 .project.p2 .art .num { color: rgba(255,255,255,.28); }
 .matrix td { font-variant-numeric: tabular-nums; }
 .grid + p, .shots + p { margin-top: 24px; }
+.ai-use .span { grid-column: 1 / -1; } .ai-use p { margin: 0 0 10px; } .ai-use ul + p { margin-top: 12px; }

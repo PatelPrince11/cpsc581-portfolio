@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=8">
   <script>
     // Pick the theme before first paint: saved choice, else the system setting.
     (function () { var t; try { t = localStorage.getItem('theme'); } catch (e) {}
@@ -272,24 +272,35 @@
     <section id="ai">
       <div class="wrap">
         <div class="section-head reveal">
-          <p class="eyebrow"><span class="idx">05</span><span class="rule"></span>AI use</p>
+          <p class="eyebrow"><span class="idx">05</span><span class="rule"></span>AI use &amp; human contributions</p>
           <h2>How I used <em>AI.</em></h2>
-          <p class="lead">I used Claude Code (Claude Opus 5.5) to help build this portfolio. I led the design, made the main decisions, chose the content and decided how the project is presented.</p>
+          <h3 class="h4" style="margin-top:20px">Building this portfolio</h3>
+          <p class="lead">I used Claude Code (Claude Opus 5.5) as a development assistant to build this portfolio. I led the design, made the main decisions, selected the content and decided how my projects should be presented. I directed the work, reviewed and refined the generated code, and made the final calls on the site's structure and presentation.</p>
         </div>
         <div class="ai-use reveal">
-          <div class="card">
-            <h3>What Claude did</h3>
-            <p class="muted">It wrote and revised the HTML, CSS and JavaScript, drafted first versions of the text from our Project 1 and Project 2 reports, pulled the figures out of the reports and took the screenshots of the live Project 1 app. I reviewed and edited what it produced, and checked it against the original report and app before publishing.</p>
-            <p class="muted small">The Project 1 app was also built with Claude Code (Claude Sonnet 5.5), and TiltTwin was built with help from Claude. The case studies cover how: <a href="project-1.html#build">Project 1</a>, <a href="project-2.html#contribution">Project 2</a>.</p>
+          <div class="card span">
+            <h3>How I used AI</h3>
+            <p class="muted">Claude Code helped write and refine the HTML, CSS and JavaScript, draft first versions of the project descriptions from our Project 1 and Project 2 reports, pull out the project figures and capture screenshots of the live Project 1 app. I provided the direction and the source material, reviewed the output, made revisions and checked the content against the original reports and apps before publishing.</p>
           </div>
-          <div class="card">
-            <h3>Made by people</h3>
+          <div class="card span">
+            <h3>On the course projects</h3>
+            <p class="muted"><strong>Project 1.</strong> I used Claude Code (Claude Sonnet 5.5) to help develop the app. I directed the work and reviewed the result. <a href="project-1.html#build">Case study</a></p>
+            <p class="muted"><strong>Project 2 (TiltTwin).</strong> Our team used Claude and ChatGPT for implementation, project planning, debugging and documentation.</p>
             <ul>
-              <li>All concept sketches, storyboards and wireframes, drawn by our teams.</li>
-              <li>The core concept, the design direction and the main project decisions.</li>
-              <li>The hobby lists and ITP personality results the Project 1 app uses.</li>
-            <li>For TiltTwin: the requirements, the real-device tests, the pilot study and which changes to make.</li>
-              <li>Choosing and reviewing the content, and the final calls on how the project is presented.</li>
+              <li>Claude helped implement parts of the v2 prototype: the phone-orientation hook, the sync layer and the feedback UI. It also helped with unit tests, screenshots and a first draft of the design-process report.</li>
+              <li>I used ChatGPT to organize the project into ten GitHub issues, set implementation priorities and dependencies, and get frontend guidance and debugging help during the baseline prototype.</li>
+              <li>ChatGPT also helped review and refine the final design-process report: improving technical explanations, documenting test results and preparing HTML revisions that kept the report's layout.</li>
+            </ul>
+            <p class="muted">Our team reviewed AI-generated suggestions and code before using them. We stayed responsible for the design decisions, implementation choices, testing and the final submitted work. <a href="project-2.html#contribution">Case study</a></p>
+          </div>
+          <div class="card span">
+            <h3>Made by people</h3>
+            <p class="muted">The core design work, creative direction and project decisions came from our team.</p>
+            <ul>
+              <li>All concept sketches, storyboards and wireframes were created by our team.</li>
+              <li>The core concepts, design directions and major project decisions were ours.</li>
+              <li>Our team selected and put together the hobby lists and ITP personality results the Project 1 app uses.</li>
+              <li>For TiltTwin, our team did the real-device testing, ran the three-person pilot and decided what to change based on the feedback.</li>
             </ul>
           </div>
         </div>
@@ -315,7 +326,7 @@
     </div>
   </footer>
 
-  <script src="js/site.js?v=7"></script>
-  <script src="js/bubbles.js?v=7"></script>
+  <script src="js/site.js?v=8"></script>
+  <script src="js/bubbles.js?v=8"></script>
 </body>
 </html>

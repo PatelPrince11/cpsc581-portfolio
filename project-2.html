@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=8">
   <script>
     // Pick the theme before first paint: saved choice, else the system setting.
     (function () { var t; try { t = localStorage.getItem('theme'); } catch (e) {}
@@ -49,11 +49,11 @@
 
         <dl class="facts">
           <div><dt>Team</dt><dd>Kevin, Ayushi Patil, Prince Patel</dd></div>
-          <div><dt>My role</dt><dd>Requirements, the v2 build with Claude (phone tilt, live sync, parts, sound), real-device tests, the pilot study</dd></div>
+          <div><dt>My role</dt><dd>V2 implementation with Claude, real-device testing, the pilot study</dd></div>
           <div><dt>Live app</dt><dd><a href="https://tilttwin.vercel.app" target="_blank" rel="noopener">tilttwin.vercel.app ↗</a> · <a href="https://github.com/Kevin398/CPSC581-TiltTwin" target="_blank" rel="noopener">code ↗</a></dd></div>
           <div><dt>Timeline</dt><dd>About 2 weeks, October 2026</dd></div>
           <div><dt>Methods</dt><dd>10-ideas sketching, criteria matrix, storyboard, two wireframe versions, unit tests, real-device tests, pilot study</dd></div>
-          <div><dt>Tools</dt><dd>React, Three.js, Firebase Realtime Database, Vercel, Claude, Playwright</dd></div>
+          <div><dt>Tools</dt><dd>React, Three.js, Firebase Realtime Database, Vercel, Claude, ChatGPT</dd></div>
         </dl>
 
         <div class="device">
@@ -215,7 +215,7 @@
               <figcaption>v1: free rotation by mouse. Hard to instruct, and no feedback until you press a button.</figcaption>
             </figure>
 
-            <p>I wrote the v2 requirements and built it with Claude: phone tilt with calibration, live sync over Firebase, and the Vercel deploy. These were the decisions that shaped it:</p>
+            <p>v2 added phone tilt with calibration, live sync over Firebase and a Vercel deploy. These were the decisions that shaped it:</p>
             <div class="grid two" style="margin-top:20px">
               <div class="card reveal"><h4>The phone is the part</h4><p class="muted small">Turning the phone turns the model the same way. The hand learns the rotation as well as the eye. We considered on-screen arrows (that was v1) and full three-axis matching, which is too hard to judge against one target.</p></div>
               <div class="card reveal"><h4>One axis per lesson</h4><p class="muted small">Hands wobble. We measure only the turn around the lesson's axis (a swing-twist split of the phone's rotation), so the sideways wobble doesn't make the feedback jitter. Euler angles would have hit gimbal lock when the phone is upright.</p></div>
@@ -327,13 +327,29 @@
           <section class="chapter" id="contribution">
             <p class="eyebrow">09 · My contribution</p>
             <h2>What <em>I</em> did.</h2>
-            <p>I set the requirements for v2 and led its build with Claude on the <code>feature/tilttwin-complete</code> branch. That covered phone tilt with calibration, live expert and beginner sync over Firebase, the Vercel deploy, the parts library and its four fit tasks, hot/cold sound and haptics, a fixed join link with checked codes, and the UI/UX redesign. I also did the repo cleanup and merged the pull requests.</p>
-            <p>I ran the testing. I did the first real-iPhone test on October 20, found that the Y-axis hint was being read backwards, diagnosed it as wording and not maths, and checked my fix on the same phone that day. I ran the three-person pilot, then made the snap-on-target change the pilot pointed to.</p>
-            <p>In the write-up I wrote the real-device and pilot sections, restyled the PDF and wrote the future-work paragraph. Claude wrote much of the code under my direction. I chose what to build, what to change after each test, and what the evidence could and couldn't support.</p>
+            <p>Our team's report credits Ayushi and me with implementing assigned GitHub issues. My part was the v2 implementation, testing, debugging and refinement of the prototype.</p>
+
+            <h3>Implementation</h3>
+            <p>My assigned v2 work included phone-orientation tracking with calibration, real-time synchronization, the parts library and fit tasks, hot/cold feedback, and the fixed join link.</p>
+            <p>I used Claude as a coding assistant for parts of these features, mainly the phone-orientation hook, the sync layer and the feedback UI. I directed the implementation, worked out the intended behaviour, reviewed the generated code and checked that the features matched our design requirements.</p>
+
+            <h3>Testing and debugging</h3>
+            <p>I took responsibility for testing the prototype and finding what needed fixing.</p>
+            <p>On October 20 I did the first real-iPhone test. I saw that the Y-axis hint was being read backwards, looked into it, worked out that the wording was wrong and the maths was fine, and checked the fix on the same phone that day.</p>
+            <p>I also ran the three-person pilot, went through the feedback and made the snap-on-target change in response to what we saw.</p>
+
+            <h3>Documentation</h3>
+            <p>I used ChatGPT to review the final design-process report, find incomplete sections, strengthen the technical explanations and document our test results accurately. I also used its suggested HTML revisions to update the report without changing its formatting, figures, tables or structure.</p>
+            <p>I reviewed the proposed changes and made sure the report kept completed testing separate from proposed usability studies and didn't claim results we didn't have.</p>
+
+            <h3>AI tools and responsibility</h3>
+            <p>AI tools sped up development and helped with implementation, debugging and documentation. They didn't decide the project's core concept, design direction or final decisions.</p>
+            <p>I stayed responsible for directing my own contributions. I reviewed generated code, tested the result and decided what to change. Our team as a whole stayed responsible for the design, implementation, verification and final submission.</p>
+
             <div class="grid three" style="margin-top:28px">
               <div class="card reveal"><h4>Kevin</h4><p class="muted small">Sketches, storyboard, wireframes and the v1 baseline. He also regenerated the final PDF and tested on an iPad.</p></div>
               <div class="card reveal"><h4>Ayushi</h4><p class="muted small">Per our report, implementation of assigned GitHub issues, and the demo video.</p></div>
-              <div class="card reveal"><h4>Me</h4><p class="muted small">The v2 build, the real-device tests, the pilot and the changes that came out of them.</p></div>
+              <div class="card reveal"><h4>Me</h4><p class="muted small">V2 implementation, the real-device tests, the pilot and the changes that came out of them.</p></div>
             </div>
           </section>
 
@@ -366,7 +382,8 @@
               <li>Dobrowolski, P. (2015). <em>Swing-twist decomposition in Clifford algebra.</em> arXiv:1506.05481. The standard technique for isolating the turn around one axis.</li>
               <li>WebKit's <code>&lt;input type="checkbox" switch&gt;</code> (Safari 17.4+), the technique behind the iOS haptic workaround. It's undocumented behaviour, so I treat it as a technique, not a reference.</li>
               <li>Google. <em>Firebase Realtime Database documentation.</em></li>
-              <li>Anthropic. (2026). <em>Claude</em> [AI assistant], used for implementation under my direction.</li>
+              <li>Anthropic. (2026). <em>Claude</em> [AI assistant], used for parts of the v2 implementation, tests and report drafting.</li>
+              <li>OpenAI. (2026). <em>ChatGPT</em> [AI assistant], used for GitHub issue planning, v1 debugging help and report editing.</li>
             </ul>
 
             <nav class="pager" aria-label="Project navigation">
@@ -386,7 +403,7 @@
     </div>
   </footer>
 
-  <script src="js/site.js?v=7"></script>
-  <script src="js/bubbles.js?v=7"></script>
+  <script src="js/site.js?v=8"></script>
+  <script src="js/bubbles.js?v=8"></script>
 </body>
 </html>
